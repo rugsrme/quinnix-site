@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1a14"/>
+      <stop offset="1" stop-color="#183026"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <!-- waveform decoration -->
+  <polyline points="0,200 60,200 90,160 120,240 150,120 180,280 210,80 240,320 270,140 300,260 330,180 360,220 390,200 420,200 480,200 600,200"
+            fill="none" stroke="#2a7a4a" stroke-width="2" opacity="0.5"/>
+  <!-- label -->
+  <text x="300" y="185" text-anchor="middle"
+        font-family="system-ui,-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#4a9a6a">VoxMason</text>
+  <text x="300" y="218" text-anchor="middle"
+        font-family="system-ui,-apple-system,sans-serif"
+        font-size="13" fill="#3a6a4a">Screenshot placeholder</text>
+</svg>

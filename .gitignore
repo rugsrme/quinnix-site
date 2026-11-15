@@ -1,0 +1,18 @@
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Deployer runtime
+/vendor/
+/.deployer/
+/.dep/
+
+# Deployer phar (copy from VoxMason or install system-wide: dep --version)
+/deployer.phar
+
+# Contact form config — NEVER commit this file
+# See config.sample.php to create it
+/config.php
