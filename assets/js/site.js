@@ -212,3 +212,61 @@ if (form && feedback && submit) {
     if (err) err.remove();
   }
 }
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+(function () {
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', 'Image viewer');
+
+  const img = document.createElement('img');
+  img.className = 'lightbox-img';
+  img.alt = '';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'lightbox-close';
+  closeBtn.setAttribute('aria-label', 'Close image viewer');
+  closeBtn.innerHTML =
+    '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+  overlay.appendChild(closeBtn);
+  overlay.appendChild(img);
+  document.body.appendChild(overlay);
+
+  let trigger = null;
+
+  function openLightbox(src, alt) {
+    img.src = src;
+    img.alt = alt || '';
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    img.src = '';
+    if (trigger) { trigger.focus(); trigger = null; }
+  }
+
+  document.querySelectorAll('.ss-link[data-lightbox]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      trigger = link;
+      openLightbox(link.href, link.dataset.alt || '');
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLightbox();
+  });
+})();

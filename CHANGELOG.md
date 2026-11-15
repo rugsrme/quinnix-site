@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Changed
+- **Screenshot presentation** — replaced narrow side-by-side layout with dedicated screenshot showcases on all three product pages:
+  - `voxmason.html`: wide single showcase of Narration Studio (`VoxMasonNarration.png`); removed duplicate screenshot from Status section
+  - `arctic-link.html`: dual showcase — LLM Studio (primary, 3fr) + SSH & network management (secondary, 2fr) using both Arctic Link screenshots; removed Connection screenshot from Status section
+  - `reelgenerator.html`: two-panel pair — Storyboard editor (`ReelGenerator.png`, top-cropped to remove empty space) + Actual frame sequence (`ReelGenFrames.png`)
+- **Click-to-enlarge lightbox** — accessible image viewer added to `site.js` (Escape key, click outside to close, focus management, `aria-modal`)
+- **CSS** (`site.css`): added `.section-intro`, `.screenshot-showcase`, `.screenshot-duo`, `.screenshot-pair`, shared `.ss-link` / `.ss-img` / `.ss-label` / `.ss-caption` helpers, `.lightbox` overlay — all responsive, collapse to single column at ≤600px
+
 ### Added
 - **Project pages**: `arctic-link.html`, `voxmason.html`, `reelgenerator.html`
   - Each has a hero section with project-specific SVG art, feature list, status block, and technology grid
