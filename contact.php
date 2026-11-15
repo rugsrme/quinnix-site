@@ -134,7 +134,7 @@ $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 // ----------------------------------------------------------------
 // Send
 // ----------------------------------------------------------------
-$sent = mail(CONTACT_TO, $emailSubject, $emailBody, $headers);
+$sent = mail(CONTACT_TO, $emailSubject, $emailBody, $headers, '-f ' . CONTACT_TO);
 
 if (!$sent) {
     error_log("Quinnix contact: mail() failed for {$email}");
