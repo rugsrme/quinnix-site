@@ -5,29 +5,24 @@ namespace Deployer;
 require 'recipe/common.php';
 
 // ---------------------------------------------------------------------------
-// Quinnix Software — Deployer 7 configuration
+// Quinnix Software — Deployer 6 configuration
 //
-// Architecture mirrors the VoxMason site deployment (voxmason-site/deploy.php).
-// The deploy_path holds versioned releases; the document_root is rsynced
-// from the active release on every deploy and rollback.
+// Tested with Deployer 6.8.0. Architecture mirrors the VoxMason site:
+// versioned releases in deploy_path, rsynced to document_root on each
+// deploy and rollback.
 //
-// Required environment variables (set in shell before running dep):
+// All deployment values have confirmed defaults and do not require
+// environment variables to be set, but can be overridden by them.
 //
-//   QUINNIX_REPOSITORY      Git clone URL of this repository
-//   QUINNIX_DEPLOY_PATH     Versioned-release base directory (confirmed: /home/quinni5/quinnix_deploy)
-//   QUINNIX_DOCUMENT_ROOT   Apache document root (confirmed: /home/quinni5/public_html)
+//   QUINNIX_REPOSITORY      default: git@github.com:rugsrme/quinnix-site.git
+//   QUINNIX_DEPLOY_PATH     default: /home/quinni5/quinnix_deploy
+//   QUINNIX_DOCUMENT_ROOT   default: /home/quinni5/public_html   (confirmed)
+//   QUINNIX_HOST            default: ehub63.webhostinghub.com
+//   QUINNIX_SSH_PORT        default: 2222
+//   QUINNIX_DEPLOY_BRANCH   default: main
 //
-// Optional:
-//   QUINNIX_HOST            SSH hostname  (default: ehub63.webhostinghub.com)
-//   QUINNIX_SSH_PORT        SSH port      (default: 2222)
-//   QUINNIX_DEPLOY_BRANCH   Branch        (default: main)
-//
-// BEFORE FIRST DEPLOY — confirm on the server via SSH:
-//   ssh -p 2222 quinni5@YOUR_SERVER_HOST
-//   ls -la /home/quinni5/quinnix.com        # confirm doc root path and contents
-//   rsync --version && git --version         # confirm server requirements
-//
-// Confirmed document root: /home/quinni5/public_html
+// Deploy command:   dep deploy production
+// Rollback command: dep rollback production
 // ---------------------------------------------------------------------------
 
 $hostName     = getenv('QUINNIX_HOST')           ?: 'ehub63.webhostinghub.com';
@@ -37,7 +32,9 @@ $deployPath   = getenv('QUINNIX_DEPLOY_PATH')    ?: '/home/quinni5/quinnix_deplo
 $documentRoot = getenv('QUINNIX_DOCUMENT_ROOT')  ?: '/home/quinni5/public_html';
 $branch       = getenv('QUINNIX_DEPLOY_BRANCH')  ?: 'main';
 
-// Hosting-managed directories rsync must never delete
+// /home/quinni5/public_html is the primary domain root and may contain
+// unrelated directories (subdomains, cPanel files). List any directory
+// that must never be deleted. Extend this list after inspecting the server.
 $protectedDirs = ['.well-known', 'cgi-bin'];
 
 set('application',           'quinnix-site');
@@ -53,6 +50,7 @@ set('document_root',         $documentRoot);
 set('protected_dirs',        $protectedDirs);
 
 host($hostName)
+    ->stage('production')
     ->set('hostname',    $hostName)
     ->set('port',        $sshPort)
     ->set('remote_user', 'quinni5')
@@ -62,6 +60,16 @@ host($hostName)
 // Helpers
 // ---------------------------------------------------------------------------
 
+// Non-destructive rsync: --delete is intentionally omitted.
+//
+// /home/quinni5/public_html is the primary domain document root. It may
+// contain subdomain directories, cPanel-managed files, and other content
+// not belonging to this site. Deleting those files would break unrelated
+// services on the same account.
+//
+// Once the contents of public_html have been inspected via SSH and all
+// directories that must be preserved are confirmed, --delete can be re-added
+// here (with those directories added to $protectedDirs above).
 function qxBuildRsync(string $src, string $dest): string
 {
     $excludes = [
@@ -76,7 +84,7 @@ function qxBuildRsync(string $src, string $dest): string
         $dir        = trim($dir, '/') . '/';
         $excludes[] = "--exclude={$dir}";
     }
-    return 'rsync -az --delete ' . implode(' ', $excludes) . " {$src} {$dest}/";
+    return 'rsync -az ' . implode(' ', $excludes) . " {$src} {$dest}/";
 }
 
 function qxAssertSource(string $src): void
@@ -90,38 +98,48 @@ function qxAssertSource(string $src): void
 }
 
 // ---------------------------------------------------------------------------
-// Validation
+// Validation — uses Deployer's resolved config values, not raw env vars,
+// so defaults baked into this file are validated correctly even when no
+// environment variables are set.
 // ---------------------------------------------------------------------------
 
-desc('Confirm required deployment values are set and safe');
+desc('Confirm deployment configuration is set and safe');
 task('deploy:validate_configuration', function (): void {
-    $required = [
-        'QUINNIX_REPOSITORY'    => getenv('QUINNIX_REPOSITORY'),
-        'QUINNIX_DEPLOY_PATH'   => getenv('QUINNIX_DEPLOY_PATH'),
-        'QUINNIX_DOCUMENT_ROOT' => getenv('QUINNIX_DOCUMENT_ROOT'),
-    ];
+    $repo = (string) get('repository');
+    $dp   = rtrim((string) get('deploy_path'), '/');
+    $dr   = rtrim((string) get('document_root'), '/');
 
-    foreach ($required as $name => $value) {
-        if ($value === false || trim((string) $value) === '') {
-            throw new \RuntimeException("Required variable {$name} is not set.");
-        }
+    if ($repo === '') {
+        throw new \RuntimeException('repository is not configured.');
     }
-
-    $dp = rtrim((string) getenv('QUINNIX_DEPLOY_PATH'), '/');
-    $dr = rtrim((string) getenv('QUINNIX_DOCUMENT_ROOT'), '/');
-
+    if ($dp === '') {
+        throw new \RuntimeException('deploy_path is not configured.');
+    }
+    if ($dr === '') {
+        throw new \RuntimeException('document_root is not configured.');
+    }
     if ($dp === '/' || strlen($dp) < 8) {
-        throw new \RuntimeException('QUINNIX_DEPLOY_PATH is too broad or missing.');
+        throw new \RuntimeException("deploy_path '{$dp}' is too broad or missing.");
     }
     if ($dr === '/' || strlen($dr) < 8) {
-        throw new \RuntimeException('QUINNIX_DOCUMENT_ROOT is too broad or missing.');
+        throw new \RuntimeException("document_root '{$dr}' is too broad or missing.");
     }
     if ($dp === $dr) {
         throw new \RuntimeException(
-            'QUINNIX_DEPLOY_PATH must not equal QUINNIX_DOCUMENT_ROOT. ' .
-            'Use a separate sibling directory, e.g. /home/quinni5/quinnix-deploy.'
+            "deploy_path and document_root must not be the same path.\n" .
+            "  deploy_path:   {$dp}\n" .
+            "  document_root: {$dr}"
         );
     }
+    // Warn if paths are nested inside each other (PHP 7 compatible)
+    if (strpos($dr . '/', $dp . '/') === 0 || strpos($dp . '/', $dr . '/') === 0) {
+        writeln('<comment>Warning: deploy_path and document_root appear to be nested. Verify they are correct.</comment>');
+    }
+
+    writeln("  repository:    {$repo}");
+    writeln("  deploy_path:   {$dp}");
+    writeln("  document_root: {$dr}");
+    writeln("  branch:        " . get('branch'));
 });
 
 // ---------------------------------------------------------------------------
@@ -138,7 +156,8 @@ task('deploy:check_requirements', function (): void {
     if (trim($git) === '') {
         throw new \RuntimeException('git not found on the server.');
     }
-    writeln('Server requirements satisfied (rsync, git)');
+    writeln('  rsync: ' . trim($rsync));
+    writeln('  git:   ' . trim($git));
 });
 
 // ---------------------------------------------------------------------------
@@ -189,5 +208,5 @@ task('deploy', [
     'deploy:unlock',
 ]);
 
-after('rollback',        'deploy:publish_current');
-after('deploy:failed',   'deploy:unlock');
+after('rollback',      'deploy:publish_current');
+after('deploy:failed', 'deploy:unlock');

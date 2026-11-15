@@ -92,7 +92,7 @@ directory and rsyncs the active release into the Apache document root on every d
 /home/quinni5/public_html/      ← Apache document root (rsynced from active release)
 ```
 
-**The document root path must be confirmed before the first deploy.** Do not assume it.
+**Publishing is non-destructive:** rsync runs without `--delete`. Existing files and directories in `public_html` that are not part of this site are left untouched. This is intentional — the primary domain root may contain subdomain directories or other cPanel-managed content. See `deploy.php` for notes on enabling `--delete` after the directory contents have been verified.
 
 ---
 
@@ -100,23 +100,22 @@ directory and rsyncs the active release into the Apache document root on every d
 
 **Local machine (the machine you deploy from):**
 
-1. PHP 8.0+:
+1. PHP (any version supported by Deployer 6):
    ```sh
    php --version
    ```
 
-2. Deployer 7 — install system-wide or copy `deployer.phar` from the VoxMason project:
+2. Deployer 6.8.0 — copy `deployer.phar` from the VoxMason project (already at version 6.8.0):
    ```sh
-   # System-wide (recommended):
-   curl -LO https://deployer.org/deployer.phar
-   chmod +x deployer.phar
-   sudo mv deployer.phar /usr/local/bin/dep
-   dep --version    # expect: Deployer 7.x
-
-   # Or copy from VoxMason (if available locally):
    cp /home/quinn/openvoice-work/voxmason-site/deployer.phar ./deployer.phar
-   # then run: php deployer.phar deploy production
+   php deployer.phar --version    # expect: Deployer 6.8.0
+
+   # Or install system-wide:
+   sudo mv deployer.phar /usr/local/bin/dep
+   dep --version
    ```
+   > **Note:** `deploy.php` targets Deployer 6. Do not replace with Deployer 7 — the
+   > API is not backwards-compatible.
 
 3. SSH access to WebHostingHub (port 2222):
    ```sh
@@ -154,7 +153,8 @@ If it is private, choose one:
 
 ### Environment variables
 
-Set these in your shell before running `dep`. Do not commit them.
+All values have confirmed defaults in `deploy.php` and do not need to be set.
+Override them only if deploying to a different host or path.
 
 | Variable | Required | Description |
 |---|---|---|
@@ -179,11 +179,22 @@ export QUINNIX_DEPLOY_BRANCH='main'
 
 ### Deploy commands
 
-Run from the `quinnix-work/` directory.
+Run from the `quinnix-work/` directory. The installed version is **Deployer 6.8.0**,
+which does not support `--dry-run`.
 
-**Dry run (always do this first):**
+**Pre-flight checks (run these before the first deploy):**
 ```sh
-dep deploy production --dry-run
+# Verify SSH access
+ssh -p 2222 quinni5@ehub63.webhostinghub.com echo "SSH OK"
+
+# Inspect the document root — note every directory and file present
+ssh -p 2222 quinni5@ehub63.webhostinghub.com "ls -la /home/quinni5/public_html/"
+
+# Confirm server has rsync and git
+ssh -p 2222 quinni5@ehub63.webhostinghub.com "rsync --version && git --version"
+
+# Create the deploy base directory if it does not exist
+ssh -p 2222 quinni5@ehub63.webhostinghub.com "mkdir -p /home/quinni5/quinnix_deploy"
 ```
 
 **Deploy:**
@@ -210,7 +221,7 @@ dep deploy:unlock production
 
 ### What is published to the document root
 
-The rsync task publishes:
+The rsync task **adds and updates** these files in `/home/quinni5/public_html`:
 ```
 index.html
 contact.php
@@ -219,7 +230,7 @@ robots.txt
 sitemap.xml
 ```
 
-Excluded from the document root:
+Excluded (never written to the document root):
 ```
 deploy.php
 config.php          ← placed manually on the server; never rsynced
@@ -227,22 +238,26 @@ config.sample.php
 deployer.phar
 *.md
 .git
+.well-known/        ← protected (cPanel-managed)
+cgi-bin/            ← protected (cPanel-managed)
 ```
+
+**Non-destructive:** rsync runs without `--delete`. Files already in `public_html`
+that are not part of this site are left untouched. Any other directories in the
+root (subdomains, cPanel placeholder files) are preserved.
 
 ---
 
-### Open questions before first deployment
+### Checklist before first deployment
 
-1. **Document root path:** Confirmed — `/home/quinni5/public_html`.
-
-2. **Deploy base path:** Confirmed — `/home/quinni5/quinnix_deploy`.
-
-3. **GitHub repository URL:** Confirmed — `rugsrme/quinnix-site` (`git@github.com:rugsrme/quinnix-site.git`).
-
-4. **config.php on server:** Upload `config.php` with the real contact email before testing the form.
-
-5. **Document root contents:** SSH in and check what is in the confirmed document root before the
-   first deploy. Do not delete anything unfamiliar.
+- [x] Document root confirmed: `/home/quinni5/public_html`
+- [x] Deploy base path confirmed: `/home/quinni5/quinnix_deploy`
+- [x] Repository confirmed: `git@github.com:rugsrme/quinnix-site.git`
+- [x] Publishing is non-destructive (no `--delete`) — existing files in `public_html` are safe
+- [ ] SSH pre-flight complete: `ls -la /home/quinni5/public_html/` reviewed
+- [ ] Deploy base directory created on server: `mkdir -p /home/quinni5/quinnix_deploy`
+- [ ] GitHub repository exists and server has clone access
+- [ ] `config.php` uploaded to server (required only for contact form)
 
 ---
 
