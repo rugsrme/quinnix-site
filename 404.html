@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Page Not Found | Quinnix Software</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" style="position:relative;" data-header>
+    <div class="shell nav-wrap">
+      <a class="brand" href="index.html" aria-label="Quinnix Software — home">
+        <svg class="brand-mark" viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
+          <defs>
+            <radialGradient id="bm-bg" cx="38%" cy="32%" r="65%">
+              <stop offset="0%" stop-color="#38bfff"/>
+              <stop offset="100%" stop-color="#0550a0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="18" cy="18" r="17" fill="url(#bm-bg)"/>
+          <circle cx="17.5" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+          <line x1="22.5" y1="22" x2="26.5" y2="26.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+          <ellipse cx="17.5" cy="17" rx="12.5" ry="5" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(-30 17.5 17)"/>
+        </svg>
+        <span class="brand-name">Quinnix<span class="brand-cyan"> Software</span></span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="error-page">
+
+      <!-- SVG: fractured wireframe sphere drifting above landscape -->
+      <div class="error-visual">
+        <svg viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <filter id="err-glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="err-glow-lg" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="10" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="err-glow-xl" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="18" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <radialGradient id="sphere-err" cx="45%" cy="38%" r="58%">
+              <stop offset="0%" stop-color="#1060c8"/>
+              <stop offset="60%" stop-color="#0a2a60"/>
+              <stop offset="100%" stop-color="#040d20"/>
+            </radialGradient>
+            <clipPath id="sphere-err-clip">
+              <circle cx="210" cy="145" r="90"/>
+            </clipPath>
+          </defs>
+
+          <!-- Ground / landscape -->
+          <g opacity="0.5">
+            <!-- Mountain silhouettes -->
+            <polygon points="0,310 70,220 110,260 160,195 200,240 240,190 290,250 340,205 380,245 420,215 420,340 0,340"
+                     fill="#040d1a" stroke="none"/>
+            <!-- Mountain ridgeline -->
+            <polyline points="0,310 70,220 110,260 160,195 200,240 240,190 290,250 340,205 380,245 420,215"
+                      stroke="#0a2850" stroke-width="1" fill="none"/>
+            <!-- Neon ridge highlight -->
+            <polyline points="140,205 160,195 180,215 200,240 220,218 240,190 258,210"
+                      stroke="#0ea5ff" stroke-width="1" fill="none" opacity="0.4" filter="url(#err-glow-sm)"/>
+            <!-- Ground reflection lines -->
+            <line x1="80"  y1="330" x2="340" y2="330" stroke="#0ea5ff" stroke-width="0.5" opacity="0.2"/>
+            <line x1="60"  y1="340" x2="360" y2="340" stroke="#0ea5ff" stroke-width="0.3" opacity="0.1"/>
+          </g>
+
+          <!-- Orbital rings (tilted, broken) -->
+          <!-- Main ring - intact portion -->
+          <ellipse cx="210" cy="145" rx="122" ry="34" fill="none" stroke="#0ea5ff" stroke-width="0.8"
+                   opacity="0.35" stroke-dasharray="180,80" transform="rotate(-18 210 145)"/>
+          <!-- Ring fragment - displaced -->
+          <ellipse cx="210" cy="145" rx="110" ry="30" fill="none" stroke="#38bfff" stroke-width="0.6"
+                   opacity="0.25" stroke-dasharray="60,250" transform="rotate(25 210 145)"
+                   filter="url(#err-glow-sm)"/>
+
+          <!-- Sphere body (drifting) -->
+          <g class="drift">
+            <!-- Sphere fill -->
+            <circle cx="210" cy="145" r="90" fill="url(#sphere-err)"/>
+
+            <!-- Wireframe latitude lines -->
+            <g clip-path="url(#sphere-err-clip)" stroke="#38bfff" fill="none">
+              <ellipse cx="210" cy="100" rx="88" ry="20" stroke-width="0.6" opacity="0.5"/>
+              <ellipse cx="210" cy="125" rx="90" ry="26" stroke-width="0.7" opacity="0.6"/>
+              <ellipse cx="210" cy="145" rx="90" ry="28" stroke-width="0.8" opacity="0.65"/>
+              <ellipse cx="210" cy="168" rx="88" ry="22" stroke-width="0.7" opacity="0.55"/>
+              <ellipse cx="210" cy="188" rx="74" ry="16" stroke-width="0.5" opacity="0.4"/>
+            </g>
+
+            <!-- Wireframe longitude lines -->
+            <g clip-path="url(#sphere-err-clip)" stroke="#38bfff" fill="none">
+              <ellipse cx="210" cy="145" rx="90" ry="22" stroke-width="0.6" opacity="0.45" transform="rotate(0   210 145)"/>
+              <ellipse cx="210" cy="145" rx="90" ry="22" stroke-width="0.5" opacity="0.38" transform="rotate(45  210 145)"/>
+              <ellipse cx="210" cy="145" rx="90" ry="22" stroke-width="0.5" opacity="0.38" transform="rotate(90  210 145)"/>
+              <ellipse cx="210" cy="145" rx="90" ry="22" stroke-width="0.6" opacity="0.45" transform="rotate(135 210 145)"/>
+            </g>
+
+            <!-- Fracture crack lines (broken sphere effect) -->
+            <g clip-path="url(#sphere-err-clip)" stroke="#38bfff" fill="none" opacity="0.7" filter="url(#err-glow-sm)">
+              <polyline points="195,80 210,105 225,95 235,120" stroke-width="1.2"/>
+              <polyline points="265,135 248,150 258,168" stroke-width="1"/>
+              <polyline points="160,155 175,170 162,185" stroke-width="0.8"/>
+            </g>
+
+            <!-- Lit facets (top-right) -->
+            <g clip-path="url(#sphere-err-clip)">
+              <polygon points="210,65 265,105 290,80" fill="#1060c8" stroke="#38bfff" stroke-width="0.6" opacity="0.75"/>
+              <polygon points="265,105 295,145 270,135" fill="#133070" stroke="#38bfff" stroke-width="0.5" opacity="0.7"/>
+              <polygon points="210,65 265,105 240,70"  fill="#0d4a9a" stroke="#38bfff" stroke-width="0.5" opacity="0.65"/>
+              <!-- Dark facets -->
+              <polygon points="150,155 170,195 135,185" fill="#040d1a" stroke="#0a2850" stroke-width="0.5" opacity="0.9"/>
+              <polygon points="170,200 155,225 200,220" fill="#040d1a" stroke="#081e38" stroke-width="0.4" opacity="0.9"/>
+            </g>
+
+            <!-- Sphere outer glow -->
+            <circle cx="210" cy="145" r="90" fill="none" stroke="#0ea5ff" stroke-width="1.5"
+                    filter="url(#err-glow-lg)" opacity="0.5"/>
+            <circle cx="210" cy="145" r="90" fill="none" stroke="#38bfff" stroke-width="0.8" opacity="0.7"/>
+
+            <!-- Broken fragment — displaced chip -->
+            <polygon points="230,80 250,65 268,82 248,95" fill="#0a2860" stroke="#38bfff" stroke-width="0.8"
+                     opacity="0.8" transform="translate(28,-22) rotate(15 248 80)" filter="url(#err-glow-sm)"/>
+          </g>
+
+          <!-- Small satellite sphere -->
+          <circle cx="338" cy="80" r="22" fill="#071624" opacity="0.7"/>
+          <circle cx="338" cy="80" r="22" fill="none" stroke="#38bfff" stroke-width="0.8"
+                  filter="url(#err-glow-sm)" opacity="0.5" class="pulse"/>
+          <ellipse cx="338" cy="80" rx="22" ry="7" fill="none" stroke="#38bfff" stroke-width="0.4"
+                   opacity="0.4"/>
+
+          <!-- Connection to satellite (dashed — broken) -->
+          <line x1="296" y1="118" x2="318" y2="90" stroke="#38bfff" stroke-width="0.5"
+                stroke-dasharray="2,5" opacity="0.25"/>
+
+          <!-- Scatter particles -->
+          <g fill="#38bfff" opacity="0.45">
+            <circle cx="80"  cy="85"  r="1.5"/>
+            <circle cx="145" cy="52"  r="2"/>
+            <circle cx="310" cy="168" r="1.5"/>
+            <circle cx="52"  cy="195" r="1.2"/>
+            <circle cx="380" cy="220" r="1.5"/>
+            <circle cx="30"  cy="260" r="1"/>
+            <circle cx="395" cy="290" r="1.2"/>
+          </g>
+        </svg>
+      </div>
+
+      <p class="error-code">404</p>
+      <h1 class="error-title">Lost in the Code</h1>
+      <p class="error-body">
+        Looks like this page wandered off the network.<br>
+        The application is still running — we just couldn't find what you were looking for.
+      </p>
+      <div class="error-actions">
+        <a href="index.html" class="btn btn-primary">Back to Home</a>
+        <a href="index.html#projects" class="btn btn-secondary">Featured Projects</a>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

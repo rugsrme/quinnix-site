@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arctic Link — Quinnix Software</title>
+  <meta name="description" content="Arctic Link is a Linux workstation and local AI management application. SSH connections, hardware monitoring, local LLM management, and more.">
+  <meta name="theme-color" content="#0d0f11">
+  <link rel="canonical" href="https://quinnix.com/arctic-link.html">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Quinnix Software">
+  <meta property="og:title"       content="Arctic Link — Quinnix Software">
+  <meta property="og:description" content="A Linux workstation and local AI management application. SSH, hardware monitoring, and local LLM management.">
+  <meta property="og:url"         content="https://quinnix.com/arctic-link.html">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" data-header>
+    <div class="shell nav-wrap">
+      <a class="brand" href="index.html" aria-label="Quinnix Software — home">
+        <svg class="brand-mark" viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
+          <defs>
+            <radialGradient id="bm-bg" cx="38%" cy="32%" r="65%">
+              <stop offset="0%" stop-color="#38bfff"/>
+              <stop offset="100%" stop-color="#0550a0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="18" cy="18" r="17" fill="url(#bm-bg)"/>
+          <circle cx="17.5" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+          <line x1="22.5" y1="22" x2="26.5" y2="26.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+          <ellipse cx="17.5" cy="17" rx="12.5" ry="5" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(-30 17.5 17)"/>
+        </svg>
+        <span class="brand-name">Quinnix<span class="brand-cyan"> Software</span></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <span class="sr-only">Toggle navigation</span>
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- BACK LINK -->
+    <div class="shell page-back">
+      <a href="index.html#projects">
+        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Projects
+      </a>
+    </div>
+
+    <!-- HERO -->
+    <section class="project-page-hero" id="hero" aria-labelledby="project-title">
+      <div class="shell">
+        <div class="project-page-hero-inner">
+
+          <div class="project-hero-text">
+            <p class="eyebrow">Quinnix Software — Project</p>
+            <h1 id="project-title">Arctic Link</h1>
+            <p class="hero-body">
+              A Linux workstation and local AI management application. What began as a small
+              SSH connection widget has evolved into a comprehensive tool for managing remote
+              systems, monitoring hardware, and running local language models.
+            </p>
+            <div class="hero-actions">
+              <span class="project-status" data-status="development" style="position:static;padding:0.4rem 1rem;">In Development</span>
+            </div>
+          </div>
+
+          <div class="project-visual hero-visual-arctic">
+            <!-- Network topology SVG -->
+            <svg viewBox="0 0 380 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <filter id="al-glow-sm" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <filter id="al-glow-lg" x="-60%" y="-60%" width="220%" height="220%">
+                  <feGaussianBlur stdDeviation="8" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <radialGradient id="al-node-main" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#38bfff" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#0ea5ff" stop-opacity="0.05"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Connection lines -->
+              <g stroke="#38bfff" stroke-dasharray="4,5" opacity="0.3">
+                <line x1="190" y1="160" x2="80"  y2="80"/>
+                <line x1="190" y1="160" x2="300" y2="80"/>
+                <line x1="190" y1="160" x2="60"  y2="210"/>
+                <line x1="190" y1="160" x2="320" y2="220"/>
+                <line x1="190" y1="160" x2="150" y2="280"/>
+                <line x1="190" y1="160" x2="260" y2="270"/>
+              </g>
+              <!-- Active connection (solid) -->
+              <line x1="190" y1="160" x2="300" y2="80" stroke="#38bfff" stroke-width="1.5" opacity="0.7" filter="url(#al-glow-sm)"/>
+              <line x1="190" y1="160" x2="60"  y2="210" stroke="#0ea5ff" stroke-width="1" opacity="0.5" filter="url(#al-glow-sm)"/>
+
+              <!-- Satellite nodes -->
+              <g filter="url(#al-glow-sm)">
+                <!-- top-left: SSH node -->
+                <circle cx="80" cy="80" r="22" fill="#071624" stroke="#38bfff" stroke-width="1" opacity="0.8"/>
+                <circle cx="80" cy="80" r="22" fill="url(#al-node-main)" opacity="0.5"/>
+                <text x="80" y="77" font-size="9" fill="#38bfff" text-anchor="middle" font-family="monospace" opacity="0.9">SSH</text>
+                <text x="80" y="88" font-size="7" fill="#38bfff" text-anchor="middle" font-family="monospace" opacity="0.6">remote</text>
+
+                <!-- top-right: AI node -->
+                <circle cx="300" cy="80" r="24" fill="#071624" stroke="#38bfff" stroke-width="1.5" opacity="0.9"/>
+                <circle cx="300" cy="80" r="24" fill="url(#al-node-main)" opacity="0.6"/>
+                <text x="300" y="77" font-size="9" fill="#38bfff" text-anchor="middle" font-family="monospace" opacity="0.9">LLM</text>
+                <text x="300" y="88" font-size="7" fill="#38bfff" text-anchor="middle" font-family="monospace" opacity="0.6">local ai</text>
+
+                <!-- left: network node -->
+                <circle cx="60" cy="210" r="18" fill="#071624" stroke="#0ea5ff" stroke-width="1" opacity="0.7"/>
+                <text x="60" y="207" font-size="7.5" fill="#0ea5ff" text-anchor="middle" font-family="monospace" opacity="0.8">NET</text>
+                <text x="60" y="217" font-size="6.5" fill="#0ea5ff" text-anchor="middle" font-family="monospace" opacity="0.55">mgmt</text>
+
+                <!-- right: hardware node -->
+                <circle cx="320" cy="220" r="20" fill="#071624" stroke="#38bfff" stroke-width="1" opacity="0.75"/>
+                <text x="320" y="217" font-size="7.5" fill="#38bfff" text-anchor="middle" font-family="monospace" opacity="0.8">HW</text>
+                <text x="320" y="228" font-size="6.5" fill="#38bfff" text-anchor="middle" font-family="monospace" opacity="0.55">monitor</text>
+
+                <!-- bottom-left -->
+                <circle cx="150" cy="280" r="16" fill="#071624" stroke="#0ea5ff" stroke-width="1" opacity="0.6"/>
+                <text x="150" y="277" font-size="7" fill="#0ea5ff" text-anchor="middle" font-family="monospace" opacity="0.75">audio</text>
+                <text x="150" y="287" font-size="6" fill="#0ea5ff" text-anchor="middle" font-family="monospace" opacity="0.5">arctic</text>
+
+                <!-- bottom-right -->
+                <circle cx="260" cy="270" r="16" fill="#071624" stroke="#38bfff" stroke-width="1" opacity="0.6"/>
+                <text x="260" y="267" font-size="7" fill="#38bfff" text-anchor="middle" font-family="monospace" opacity="0.75">chat</text>
+                <text x="260" y="277" font-size="6" fill="#38bfff" text-anchor="middle" font-family="monospace" opacity="0.5">history</text>
+              </g>
+
+              <!-- Central node -->
+              <circle cx="190" cy="160" r="40" fill="url(#al-node-main)" opacity="0.8"/>
+              <circle cx="190" cy="160" r="40" fill="none" stroke="#38bfff" stroke-width="1.5" opacity="0.9" filter="url(#al-glow-lg)"/>
+              <circle cx="190" cy="160" r="40" fill="none" stroke="#38bfff" stroke-width="0.8" opacity="0.6"/>
+              <!-- Terminal icon in center -->
+              <polyline points="176,154 184,160 176,166" stroke="#38bfff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+              <line x1="186" y1="166" x2="204" y2="166" stroke="#38bfff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+
+              <!-- Scatter particles -->
+              <g fill="#38bfff" opacity="0.4">
+                <circle cx="130" cy="45"  r="1.5"/>
+                <circle cx="240" cy="38"  r="1.2"/>
+                <circle cx="350" cy="150" r="1.5"/>
+                <circle cx="28"  cy="140" r="1.2"/>
+                <circle cx="200" cy="310" r="1"/>
+                <circle cx="310" cy="295" r="1.5"/>
+              </g>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="project-detail-section" id="overview" aria-labelledby="overview-title">
+      <div class="shell">
+        <div class="detail-inner wide-left">
+          <div>
+            <p class="eyebrow">The Origin</p>
+            <h2 id="overview-title">From Widget to Workstation Manager</h2>
+            <p>
+              Arctic Link started as a small utility to solve a specific problem: managing SSH
+              connections to a remote Linux computer without remembering hostnames, ports, and
+              key paths. Rather than keeping notes or typing the same commands repeatedly, the
+              idea was a lightweight interface that handled the connection details.
+            </p>
+            <p>
+              That utility worked well enough that it became a daily tool. And daily tools have a
+              way of accumulating new needs. What could also show CPU temperature? What if it displayed
+              network traffic? What if it could manage locally hosted AI models?
+            </p>
+            <p>
+              Each addition made the application more useful, and together those additions became
+              something meaningfully larger than the original widget. That progression — from widget
+              to working application — is exactly what Quinnix is about.
+            </p>
+            <p>
+              Today, Arctic Link integrates with the Arctic-Audio Linux workstation and serves as
+              a central management interface for local hardware, remote systems, and locally hosted
+              language models.
+            </p>
+          </div>
+          <div class="screenshot-placeholder">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Screenshot — Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="project-detail-section alt" id="capabilities" aria-labelledby="capabilities-title">
+      <div class="shell">
+        <p class="eyebrow">What It Does</p>
+        <h2 id="capabilities-title" style="margin-bottom:2rem;">Key Capabilities</h2>
+        <div class="detail-inner">
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>SSH &amp; Remote Connection Management</strong>
+                <p>Manage saved SSH connections to remote Linux systems. Launch sessions, handle key-based authentication, and maintain connection profiles without memorizing details.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 010 8.49m-8.48-.01a6 6 0 010-8.49m11.31-2.82a10 10 0 010 14.14m-14.14 0a10 10 0 010-14.14"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Network Management</strong>
+                <p>Monitor network interfaces, check connectivity, and manage network-related configuration for local and remote systems.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Hardware &amp; System Monitoring</strong>
+                <p>Real-time system stats including CPU, memory, disk usage, and hardware temperatures for the local workstation and monitored remote machines.</p>
+              </div>
+            </div>
+          </div>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 2v3m0 14v3M4.22 4.22l2.12 2.12m11.32 11.32 2.12 2.12M2 12h3m14 0h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Local AI Model Management</strong>
+                <p>Install, run, and manage locally hosted large language models. Control model availability without relying on external API services.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>AI Conversations &amp; History</strong>
+                <p>Interact with locally hosted LLMs through a conversation interface. Conversation history is stored locally, keeping interactions private and persistent.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Arctic-Audio Workstation Integration</strong>
+                <p>Connects with the Arctic-Audio Linux workstation setup, providing unified access to audio hardware, monitoring, and related system controls.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS & TECH -->
+    <section class="project-detail-section" id="status" aria-labelledby="status-title">
+      <div class="shell">
+        <div class="detail-inner">
+          <div>
+            <p class="eyebrow">Development Status</p>
+            <h2 id="status-title">Current State</h2>
+            <p>
+              Arctic Link is an actively developed personal tool. Core functionality is in daily
+              use; capabilities continue to expand as new needs emerge from real workstation use.
+            </p>
+            <p>
+              The application is not currently available for public download. No public release
+              date is planned at this time.
+            </p>
+            <div class="status-block" style="margin-top:1.5rem;">
+              <h3>Feature Status</h3>
+              <div class="status-row"><span class="status-dot ready"></span>SSH connection management</div>
+              <div class="status-row"><span class="status-dot ready"></span>Hardware monitoring</div>
+              <div class="status-row"><span class="status-dot ready"></span>Local AI model management</div>
+              <div class="status-row"><span class="status-dot dev"></span>AI conversation history</div>
+              <div class="status-row"><span class="status-dot dev"></span>Network management</div>
+              <div class="status-row"><span class="status-dot dev"></span>Arctic-Audio integration</div>
+            </div>
+          </div>
+          <div>
+            <p class="eyebrow">Technologies</p>
+            <h2 style="margin-bottom:1rem;">Built With</h2>
+            <div class="tech-grid" style="margin-bottom:2rem;">
+              <span class="tech-pill">Linux</span>
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">SSH</span>
+              <span class="tech-pill">Local LLMs</span>
+              <span class="tech-pill">Ollama</span>
+              <span class="tech-pill">System APIs</span>
+              <span class="tech-pill">Network Tools</span>
+            </div>
+            <div class="screenshot-placeholder">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <span>Screenshot — Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PROJECT NAVIGATION -->
+  <nav class="project-sibling-nav" aria-label="Other projects">
+    <div class="shell">
+      <div class="sibling-nav-inner">
+        <a href="index.html#projects" class="sibling-nav-link">
+          <span class="sibling-nav-label">← All Projects</span>
+          <span class="sibling-nav-name">Featured Projects</span>
+        </a>
+        <a href="voxmason.html" class="sibling-nav-link next">
+          <span class="sibling-nav-label">Next Project →</span>
+          <span class="sibling-nav-name">VoxMason</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link" aria-label="Quinnix Software — home">
+            <svg class="brand-mark" viewBox="0 0 36 36" width="24" height="24" aria-hidden="true">
+              <circle cx="18" cy="18" r="17" fill="#0550a0"/>
+              <circle cx="17.5" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+              <line x1="22.5" y1="22" x2="26.5" y2="26.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+              <ellipse cx="17.5" cy="17" rx="12.5" ry="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1" transform="rotate(-30 17.5 17)"/>
+            </svg>
+            <strong>Quinnix Software</strong>
+          </a>
+          <p class="footer-tagline">From Widgets to Working Applications.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html#projects">Projects</a>
+          <a href="arctic-link.html">Arctic Link</a>
+          <a href="voxmason.html">VoxMason</a>
+          <a href="reelgenerator.html">ReelGenerator</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <p class="footer-copy">&copy; <span data-year></span> Quinnix Software. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReelGenerator — Quinnix Software</title>
+  <meta name="description" content="ReelGenerator is a project focused on generating short-form video content and automating media production workflows.">
+  <meta name="theme-color" content="#0d0f11">
+  <link rel="canonical" href="https://quinnix.com/reelgenerator.html">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Quinnix Software">
+  <meta property="og:title"       content="ReelGenerator — Quinnix Software">
+  <meta property="og:description" content="ReelGenerator is a project focused on generating short-form video content and automated media production workflows.">
+  <meta property="og:url"         content="https://quinnix.com/reelgenerator.html">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+  <style>
+    .project-page-hero { background: linear-gradient(180deg, #060c14 0%, #0a0610 100%); }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" data-header>
+    <div class="shell nav-wrap">
+      <a class="brand" href="index.html" aria-label="Quinnix Software — home">
+        <svg class="brand-mark" viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
+          <defs>
+            <radialGradient id="bm-bg" cx="38%" cy="32%" r="65%">
+              <stop offset="0%" stop-color="#38bfff"/>
+              <stop offset="100%" stop-color="#0550a0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="18" cy="18" r="17" fill="url(#bm-bg)"/>
+          <circle cx="17.5" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+          <line x1="22.5" y1="22" x2="26.5" y2="26.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+          <ellipse cx="17.5" cy="17" rx="12.5" ry="5" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(-30 17.5 17)"/>
+        </svg>
+        <span class="brand-name">Quinnix<span class="brand-cyan"> Software</span></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <span class="sr-only">Toggle navigation</span>
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- BACK LINK -->
+    <div class="shell page-back">
+      <a href="index.html#projects">
+        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Projects
+      </a>
+    </div>
+
+    <!-- HERO -->
+    <section class="project-page-hero" id="hero" aria-labelledby="project-title">
+      <div class="shell">
+        <div class="project-page-hero-inner">
+
+          <div class="project-hero-text">
+            <p class="eyebrow">Quinnix Software — Project</p>
+            <h1 id="project-title" style="color:#a855f7;text-shadow:0 0 30px rgba(168,85,247,0.4);">ReelGenerator</h1>
+            <p class="hero-body">
+              A project focused on generating short-form video content and automating media
+              production workflows. Currently in early development, with exploration of
+              AI-assisted content generation, scripting, and automated rendering pipelines.
+            </p>
+            <div class="hero-actions">
+              <span class="project-status" data-status="development" style="position:static;padding:0.4rem 1rem;">Early Development</span>
+            </div>
+          </div>
+
+          <div class="project-visual hero-visual-reel">
+            <!-- Film reel / frame strip SVG -->
+            <svg viewBox="0 0 380 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <filter id="rg-glow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <linearGradient id="rg-grad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#a855f7" stop-opacity="0.6"/>
+                  <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.6"/>
+                </linearGradient>
+                <linearGradient id="rg-frame" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a0730" stop-opacity="1"/>
+                  <stop offset="100%" stop-color="#120520" stop-opacity="1"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Film strip track lines (top + bottom) -->
+              <rect x="20" y="85" width="340" height="130" rx="8" fill="url(#rg-frame)" stroke="rgba(168,85,247,0.3)" stroke-width="1.5"/>
+
+              <!-- Sprocket holes — top row -->
+              <g fill="#060c14" stroke="rgba(168,85,247,0.4)" stroke-width="1">
+                <rect x="30"  y="93"  width="14" height="10" rx="2"/>
+                <rect x="58"  y="93"  width="14" height="10" rx="2"/>
+                <rect x="86"  y="93"  width="14" height="10" rx="2"/>
+                <rect x="114" y="93"  width="14" height="10" rx="2"/>
+                <rect x="142" y="93"  width="14" height="10" rx="2"/>
+                <rect x="170" y="93"  width="14" height="10" rx="2"/>
+                <rect x="198" y="93"  width="14" height="10" rx="2"/>
+                <rect x="226" y="93"  width="14" height="10" rx="2"/>
+                <rect x="254" y="93"  width="14" height="10" rx="2"/>
+                <rect x="282" y="93"  width="14" height="10" rx="2"/>
+                <rect x="310" y="93"  width="14" height="10" rx="2"/>
+                <rect x="338" y="93"  width="14" height="10" rx="2"/>
+              </g>
+              <!-- Sprocket holes — bottom row -->
+              <g fill="#060c14" stroke="rgba(168,85,247,0.4)" stroke-width="1">
+                <rect x="30"  y="197" width="14" height="10" rx="2"/>
+                <rect x="58"  y="197" width="14" height="10" rx="2"/>
+                <rect x="86"  y="197" width="14" height="10" rx="2"/>
+                <rect x="114" y="197" width="14" height="10" rx="2"/>
+                <rect x="142" y="197" width="14" height="10" rx="2"/>
+                <rect x="170" y="197" width="14" height="10" rx="2"/>
+                <rect x="198" y="197" width="14" height="10" rx="2"/>
+                <rect x="226" y="197" width="14" height="10" rx="2"/>
+                <rect x="254" y="197" width="14" height="10" rx="2"/>
+                <rect x="282" y="197" width="14" height="10" rx="2"/>
+                <rect x="310" y="197" width="14" height="10" rx="2"/>
+                <rect x="338" y="197" width="14" height="10" rx="2"/>
+              </g>
+
+              <!-- Frame cells -->
+              <g>
+                <!-- Frame 1 (dark, out-of-frame) -->
+                <rect x="22" y="108" width="68" height="84" rx="2" fill="rgba(168,85,247,0.04)" stroke="rgba(168,85,247,0.15)" stroke-width="1"/>
+                <!-- Frame 2 -->
+                <rect x="97" y="108" width="68" height="84" rx="2" fill="rgba(168,85,247,0.06)" stroke="rgba(168,85,247,0.2)" stroke-width="1"/>
+                <!-- Frame 3 (active / lit) -->
+                <rect x="172" y="106" width="72" height="88" rx="3" fill="rgba(168,85,247,0.1)" stroke="#a855f7" stroke-width="1.5" filter="url(#rg-glow)"/>
+                <!-- Play button in active frame -->
+                <polygon points="195,150 212,150 212,165 195,165" fill="none"/>
+                <circle cx="208" cy="150" r="22" fill="rgba(168,85,247,0.15)" stroke="#a855f7" stroke-width="1" filter="url(#rg-glow)"/>
+                <polygon points="202,142 220,150 202,158" fill="#a855f7" opacity="0.9"/>
+                <!-- Frame 4 -->
+                <rect x="251" y="108" width="68" height="84" rx="2" fill="rgba(168,85,247,0.06)" stroke="rgba(168,85,247,0.2)" stroke-width="1"/>
+                <!-- Frame 5 (dark) -->
+                <rect x="326" y="108" width="34" height="84" rx="2" fill="rgba(168,85,247,0.03)" stroke="rgba(168,85,247,0.1)" stroke-width="1"/>
+              </g>
+
+              <!-- Scatter particles -->
+              <g fill="#a855f7" opacity="0.4">
+                <circle cx="40"  cy="52"  r="2"/>
+                <circle cx="180" cy="40"  r="1.5"/>
+                <circle cx="340" cy="58"  r="2"/>
+                <circle cx="90"  cy="260" r="1.5"/>
+                <circle cx="280" cy="262" r="2"/>
+                <circle cx="360" cy="230" r="1.2"/>
+              </g>
+
+              <!-- Strip glow overlay -->
+              <rect x="20" y="85" width="340" height="130" rx="8" fill="none"
+                    stroke="url(#rg-grad)" stroke-width="1" filter="url(#rg-glow)" opacity="0.5"/>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="project-detail-section" id="overview" aria-labelledby="overview-title">
+      <div class="shell">
+        <div class="detail-inner wide-left">
+          <div>
+            <p class="eyebrow">About the Project</p>
+            <h2 id="overview-title">Automated Video Content Generation</h2>
+            <p>
+              ReelGenerator explores the question of how much of a short-form video production
+              workflow can be automated. Short-form video content requires consistent output:
+              scripting, visuals, timing, captions, and format-specific rendering — tasks that
+              are individually manageable but collectively time-intensive to do manually.
+            </p>
+            <p>
+              The project is in early stages, with the primary focus on understanding where
+              automation is practical and where human judgment remains necessary. This means
+              building and testing individual pipeline components before assembling them into
+              a complete workflow.
+            </p>
+            <p>
+              ReelGenerator is not a commercial product at this stage. It is a development
+              project, and the capabilities described below reflect work in progress rather
+              than finished functionality.
+            </p>
+          </div>
+          <div class="screenshot-placeholder">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Screenshot — Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="project-detail-section alt" id="capabilities" aria-labelledby="capabilities-title">
+      <div class="shell">
+        <p class="eyebrow">Development Focus</p>
+        <h2 id="capabilities-title" style="margin-bottom:2rem;">Areas of Work</h2>
+        <div class="detail-inner">
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.25);color:#a855f7;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Content Scripting</strong>
+                <p>Generating structured scripts for short-form content, including segment timing and visual cue notes.</p>
+              </div>
+            </div>
+            <div class="feature-item experimental">
+              <div class="feature-icon" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.25);color:#a855f7;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Automated Rendering Pipeline</strong>
+                <p>Research into assembling video frames, audio, and captions into a rendered output file without manual editing steps.</p>
+              </div>
+            </div>
+            <div class="feature-item experimental">
+              <div class="feature-icon" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.25);color:#a855f7;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 2v3m0 14v3M4.22 4.22l2.12 2.12m11.32 11.32 2.12 2.12"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>AI-Assisted Content Generation</strong>
+                <p>Exploration of AI tools for drafting scripts, selecting visuals, and generating voiceover audio. Currently experimental.</p>
+              </div>
+            </div>
+          </div>
+          <div class="feature-list">
+            <div class="feature-item experimental">
+              <div class="feature-icon" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.25);color:#a855f7;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
+                  <line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/>
+                  <line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/>
+                  <line x1="17" y1="7" x2="22" y2="7"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Format-Specific Rendering</strong>
+                <p>Generating outputs sized and formatted for different short-form platforms. Under active research.</p>
+              </div>
+            </div>
+            <div class="feature-item experimental">
+              <div class="feature-icon" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.25);color:#a855f7;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Caption Generation</strong>
+                <p>Automatically generating and timing caption tracks from script content. Early stage.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.25);color:#a855f7;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Workflow Research</strong>
+                <p>Identifying which parts of the content production process are good automation candidates and which require human input.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS & TECH -->
+    <section class="project-detail-section" id="status" aria-labelledby="status-title">
+      <div class="shell">
+        <div class="detail-inner">
+          <div>
+            <p class="eyebrow">Development Status</p>
+            <h2 id="status-title">Early Stage</h2>
+            <p>
+              ReelGenerator is in early development. The project is in the phase of building
+              and testing individual pipeline components. No complete end-to-end workflow
+              is functional yet, and no public release is planned.
+            </p>
+            <p>
+              Capabilities described on this page reflect active development work, not shipped
+              features. Items marked as experimental are research-stage.
+            </p>
+            <div class="status-block" style="margin-top:1.5rem;">
+              <h3>Development Phase</h3>
+              <div class="status-row"><span class="status-dot dev"></span>Content scripting (in progress)</div>
+              <div class="status-row"><span class="status-dot planned"></span>Rendering pipeline (research)</div>
+              <div class="status-row"><span class="status-dot planned"></span>AI content generation (research)</div>
+              <div class="status-row"><span class="status-dot planned"></span>Format-specific output (planned)</div>
+              <div class="status-row"><span class="status-dot planned"></span>Caption generation (planned)</div>
+            </div>
+          </div>
+          <div>
+            <p class="eyebrow">Technologies</p>
+            <h2 style="margin-bottom:1rem;">Areas of Interest</h2>
+            <div class="tech-grid" style="margin-bottom:2rem;">
+              <span class="tech-pill" style="border-color:rgba(168,85,247,0.4);color:#a855f7;background:rgba(168,85,247,0.06);">Python</span>
+              <span class="tech-pill" style="border-color:rgba(168,85,247,0.4);color:#a855f7;background:rgba(168,85,247,0.06);">Video Processing</span>
+              <span class="tech-pill" style="border-color:rgba(168,85,247,0.4);color:#a855f7;background:rgba(168,85,247,0.06);">AI Tools</span>
+              <span class="tech-pill" style="border-color:rgba(168,85,247,0.4);color:#a855f7;background:rgba(168,85,247,0.06);">FFmpeg</span>
+              <span class="tech-pill" style="border-color:rgba(168,85,247,0.4);color:#a855f7;background:rgba(168,85,247,0.06);">Linux</span>
+              <span class="tech-pill" style="border-color:rgba(168,85,247,0.4);color:#a855f7;background:rgba(168,85,247,0.06);">Automation</span>
+            </div>
+            <p style="font-size:var(--text-sm);color:var(--text-muted);">
+              Technology choices are still being evaluated as the project develops.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PROJECT NAVIGATION -->
+  <nav class="project-sibling-nav" aria-label="Other projects">
+    <div class="shell">
+      <div class="sibling-nav-inner">
+        <a href="voxmason.html" class="sibling-nav-link">
+          <span class="sibling-nav-label">← Previous</span>
+          <span class="sibling-nav-name">VoxMason</span>
+        </a>
+        <a href="arctic-link.html" class="sibling-nav-link next">
+          <span class="sibling-nav-label">Also →</span>
+          <span class="sibling-nav-name">Arctic Link</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link" aria-label="Quinnix Software — home">
+            <svg class="brand-mark" viewBox="0 0 36 36" width="24" height="24" aria-hidden="true">
+              <circle cx="18" cy="18" r="17" fill="#0550a0"/>
+              <circle cx="17.5" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+              <line x1="22.5" y1="22" x2="26.5" y2="26.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+              <ellipse cx="17.5" cy="17" rx="12.5" ry="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1" transform="rotate(-30 17.5 17)"/>
+            </svg>
+            <strong>Quinnix Software</strong>
+          </a>
+          <p class="footer-tagline">From Widgets to Working Applications.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html#projects">Projects</a>
+          <a href="arctic-link.html">Arctic Link</a>
+          <a href="voxmason.html">VoxMason</a>
+          <a href="reelgenerator.html">ReelGenerator</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <p class="footer-copy">&copy; <span data-year></span> Quinnix Software. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

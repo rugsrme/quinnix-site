@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VoxMason — Quinnix Software</title>
+  <meta name="description" content="VoxMason is a voice generation and audiobook production application. Text-to-speech, narration workflows, and audio production tools.">
+  <meta name="theme-color" content="#0d0f11">
+  <link rel="canonical" href="https://quinnix.com/voxmason.html">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Quinnix Software">
+  <meta property="og:title"       content="VoxMason — Voice Generation &amp; Audiobook Production">
+  <meta property="og:description" content="VoxMason is a voice generation and audiobook production application by Quinnix Software.">
+  <meta property="og:url"         content="https://quinnix.com/voxmason.html">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+  <style>
+    /* VoxMason accent overrides */
+    .hero-visual-voxmason .feature-icon { background: rgba(52,199,123,0.1); border-color: rgba(52,199,123,0.25); color: #34c77b; }
+    .tech-pill.vox { border-color: rgba(52,199,123,0.4); color: #34c77b; background: rgba(52,199,123,0.06); }
+    .project-page-hero { background: linear-gradient(180deg, #060c14 0%, #060f10 100%); }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" data-header>
+    <div class="shell nav-wrap">
+      <a class="brand" href="index.html" aria-label="Quinnix Software — home">
+        <svg class="brand-mark" viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
+          <defs>
+            <radialGradient id="bm-bg" cx="38%" cy="32%" r="65%">
+              <stop offset="0%" stop-color="#38bfff"/>
+              <stop offset="100%" stop-color="#0550a0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="18" cy="18" r="17" fill="url(#bm-bg)"/>
+          <circle cx="17.5" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+          <line x1="22.5" y1="22" x2="26.5" y2="26.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+          <ellipse cx="17.5" cy="17" rx="12.5" ry="5" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(-30 17.5 17)"/>
+        </svg>
+        <span class="brand-name">Quinnix<span class="brand-cyan"> Software</span></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <span class="sr-only">Toggle navigation</span>
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- BACK LINK -->
+    <div class="shell page-back">
+      <a href="index.html#projects">
+        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Projects
+      </a>
+    </div>
+
+    <!-- HERO -->
+    <section class="project-page-hero" id="hero" aria-labelledby="project-title">
+      <div class="shell">
+        <div class="project-page-hero-inner">
+
+          <div class="project-hero-text">
+            <p class="eyebrow">Quinnix Software — Project</p>
+            <h1 id="project-title" style="color:#34c77b;text-shadow:0 0 30px rgba(52,199,123,0.4);">VoxMason</h1>
+            <p class="hero-body">
+              A voice generation and audiobook production application. VoxMason brings together
+              text-to-speech synthesis, narration workflows, and audio file management into a
+              practical tool for producing spoken-word content.
+            </p>
+            <div class="hero-actions">
+              <a href="https://voxmason.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer"
+                 style="background:#34c77b;border-color:#34c77b;box-shadow:0 0 12px rgba(52,199,123,0.4);">
+                Visit voxmason.com
+              </a>
+              <span class="project-status" data-status="development" style="position:static;padding:0.4rem 1rem;">In Development</span>
+            </div>
+          </div>
+
+          <div class="project-visual hero-visual-voxmason">
+            <!-- Audio waveform SVG -->
+            <svg viewBox="0 0 380 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <filter id="vm-glow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <linearGradient id="vm-bar-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#34c77b" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#34c77b" stop-opacity="0.2"/>
+                </linearGradient>
+                <linearGradient id="vm-bar-soft" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#34c77b" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#34c77b" stop-opacity="0.08"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Microphone silhouette (subtle) -->
+              <rect x="176" y="50" width="28" height="50" rx="14" fill="none" stroke="rgba(52,199,123,0.2)" stroke-width="1.5"/>
+              <path d="M158 108 C158 128 222 128 222 108" fill="none" stroke="rgba(52,199,123,0.2)" stroke-width="1.5"/>
+              <line x1="190" y1="128" x2="190" y2="145" stroke="rgba(52,199,123,0.2)" stroke-width="1.5"/>
+              <line x1="178" y1="145" x2="202" y2="145" stroke="rgba(52,199,123,0.2)" stroke-width="1.5"/>
+
+              <!-- Main waveform bars (centered at y=185) -->
+              <g filter="url(#vm-glow)">
+                <!-- Bar pattern: heights reflect speech amplitude -->
+                <rect x="22"  y="175" width="8" height="20" rx="4" fill="url(#vm-bar-soft)"/>
+                <rect x="36"  y="162" width="8" height="46" rx="4" fill="url(#vm-bar-soft)"/>
+                <rect x="50"  y="150" width="8" height="70" rx="4" fill="url(#vm-bar-grad)"/>
+                <rect x="64"  y="158" width="8" height="54" rx="4" fill="url(#vm-bar-grad)"/>
+                <rect x="78"  y="142" width="8" height="86" rx="4" fill="url(#vm-bar-grad)" opacity="0.9"/>
+                <rect x="92"  y="155" width="8" height="60" rx="4" fill="url(#vm-bar-grad)"/>
+                <rect x="106" y="145" width="8" height="80" rx="4" fill="url(#vm-bar-grad)"/>
+                <rect x="120" y="160" width="8" height="50" rx="4" fill="url(#vm-bar-soft)"/>
+                <rect x="134" y="170" width="8" height="30" rx="4" fill="url(#vm-bar-soft)"/>
+                <rect x="148" y="178" width="8" height="14" rx="4" fill="url(#vm-bar-soft)" opacity="0.5"/>
+                <!-- Gap around mic -->
+                <rect x="232" y="178" width="8" height="14" rx="4" fill="url(#vm-bar-soft)" opacity="0.5"/>
+                <rect x="246" y="168" width="8" height="34" rx="4" fill="url(#vm-bar-soft)"/>
+                <rect x="260" y="155" width="8" height="60" rx="4" fill="url(#vm-bar-grad)"/>
+                <rect x="274" y="148" width="8" height="74" rx="4" fill="url(#vm-bar-grad)"/>
+                <rect x="288" y="140" width="8" height="90" rx="4" fill="url(#vm-bar-grad)" opacity="0.9"/>
+                <rect x="302" y="150" width="8" height="70" rx="4" fill="url(#vm-bar-grad)"/>
+                <rect x="316" y="162" width="8" height="46" rx="4" fill="url(#vm-bar-soft)"/>
+                <rect x="330" y="172" width="8" height="26" rx="4" fill="url(#vm-bar-soft)"/>
+                <rect x="344" y="178" width="8" height="14" rx="4" fill="url(#vm-bar-soft)" opacity="0.5"/>
+              </g>
+
+              <!-- Baseline -->
+              <line x1="20" y1="250" x2="360" y2="250" stroke="rgba(52,199,123,0.15)" stroke-width="1"/>
+
+              <!-- Playhead -->
+              <line x1="192" y1="135" x2="192" y2="255" stroke="#34c77b" stroke-width="1.5"
+                    stroke-dasharray="3,3" opacity="0.6" filter="url(#vm-glow)"/>
+              <circle cx="192" cy="135" r="4" fill="#34c77b" opacity="0.8" filter="url(#vm-glow)"/>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="project-detail-section" id="overview" aria-labelledby="overview-title">
+      <div class="shell">
+        <div class="detail-inner wide-left">
+          <div>
+            <p class="eyebrow">About the Project</p>
+            <h2 id="overview-title">Voice Generation for Real Workflows</h2>
+            <p>
+              VoxMason was built around a practical need: producing narrated audio from written
+              text. What started as a simple text-to-speech workflow grew to encompass different
+              synthesis engines, voice options, narration project management, and audiobook
+              production tooling.
+            </p>
+            <p>
+              The application is designed for sustained narration work — not just generating a
+              single clip, but managing a project through draft, revision, rendering, and
+              export. That means handling chapter organization, tracking rendering status,
+              managing audio output files, and maintaining consistency across a long-form project.
+            </p>
+            <p>
+              VoxMason also serves as a research platform for voice synthesis and voice cloning
+              technologies, allowing experimentation with different approaches without committing
+              to a single engine or provider.
+            </p>
+          </div>
+          <div class="screenshot-placeholder">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Screenshot — Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="project-detail-section alt" id="capabilities" aria-labelledby="capabilities-title">
+      <div class="shell">
+        <p class="eyebrow">What It Does</p>
+        <h2 id="capabilities-title" style="margin-bottom:2rem;">Key Capabilities</h2>
+        <div class="detail-inner">
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon" style="background:rgba(52,199,123,0.1);border-color:rgba(52,199,123,0.25);color:#34c77b;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Text-to-Speech Generation</strong>
+                <p>Convert written text to natural-sounding spoken audio. Supports multiple synthesis engines and voice configurations.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon" style="background:rgba(52,199,123,0.1);border-color:rgba(52,199,123,0.25);color:#34c77b;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Narration Workflows</strong>
+                <p>Manage narration projects from draft text to finished audio. Chapter organization, render queue, and project-level status tracking.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon" style="background:rgba(52,199,123,0.1);border-color:rgba(52,199,123,0.25);color:#34c77b;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 2v3m0 14v3M4.22 4.22l2.12 2.12m11.32 11.32 2.12 2.12"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Audio Generation &amp; File Management</strong>
+                <p>Batch rendering, format conversion, and organized output file management. Generated audio is stored and catalogued within the project.</p>
+              </div>
+            </div>
+          </div>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon" style="background:rgba(52,199,123,0.1);border-color:rgba(52,199,123,0.25);color:#34c77b;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Audiobook Production</strong>
+                <p>End-to-end support for audiobook projects: chapter management, metadata, audio consistency across a full book, and export for distribution formats.</p>
+              </div>
+            </div>
+            <div class="feature-item experimental">
+              <div class="feature-icon" style="background:rgba(52,199,123,0.1);border-color:rgba(52,199,123,0.25);color:#34c77b;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Voice Cloning Research</strong>
+                <p>Active research and experimentation with voice cloning techniques, allowing custom voice creation from audio samples. Results are mixed across different source materials.</p>
+              </div>
+            </div>
+            <div class="feature-item experimental">
+              <div class="feature-icon" style="background:rgba(52,199,123,0.1);border-color:rgba(52,199,123,0.25);color:#34c77b;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+              </div>
+              <div class="feature-body">
+                <strong>Multi-Engine Synthesis</strong>
+                <p>Support for multiple TTS engines allows side-by-side comparison and engine switching within a project. Engine availability depends on local configuration.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS & TECH -->
+    <section class="project-detail-section" id="status" aria-labelledby="status-title">
+      <div class="shell">
+        <div class="detail-inner">
+          <div>
+            <p class="eyebrow">Development Status</p>
+            <h2 id="status-title">Current State</h2>
+            <p>
+              VoxMason has a production website at
+              <a href="https://voxmason.com" target="_blank" rel="noopener noreferrer">voxmason.com</a>.
+              Core text-to-speech and narration workflow features are in active use. Voice cloning
+              and multi-engine support remain areas of ongoing research and development.
+            </p>
+            <div class="status-block" style="margin-top:1.5rem;">
+              <h3>Feature Status</h3>
+              <div class="status-row"><span class="status-dot ready"></span>Text-to-speech generation</div>
+              <div class="status-row"><span class="status-dot ready"></span>Narration project management</div>
+              <div class="status-row"><span class="status-dot ready"></span>Audio file management</div>
+              <div class="status-row"><span class="status-dot dev"></span>Audiobook production workflow</div>
+              <div class="status-row"><span class="status-dot dev"></span>Voice cloning (experimental)</div>
+              <div class="status-row"><span class="status-dot dev"></span>Multi-engine synthesis</div>
+            </div>
+          </div>
+          <div>
+            <p class="eyebrow">Technologies</p>
+            <h2 style="margin-bottom:1rem;">Built With</h2>
+            <div class="tech-grid" style="margin-bottom:2rem;">
+              <span class="tech-pill vox">Python</span>
+              <span class="tech-pill vox">TTS Engines</span>
+              <span class="tech-pill vox">Audio Processing</span>
+              <span class="tech-pill vox">Linux</span>
+              <span class="tech-pill vox">Voice Cloning</span>
+              <span class="tech-pill vox">File Management</span>
+            </div>
+            <div class="screenshot-placeholder">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <span>Screenshot — Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PROJECT NAVIGATION -->
+  <nav class="project-sibling-nav" aria-label="Other projects">
+    <div class="shell">
+      <div class="sibling-nav-inner">
+        <a href="arctic-link.html" class="sibling-nav-link">
+          <span class="sibling-nav-label">← Previous</span>
+          <span class="sibling-nav-name">Arctic Link</span>
+        </a>
+        <a href="reelgenerator.html" class="sibling-nav-link next">
+          <span class="sibling-nav-label">Next Project →</span>
+          <span class="sibling-nav-name">ReelGenerator</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link" aria-label="Quinnix Software — home">
+            <svg class="brand-mark" viewBox="0 0 36 36" width="24" height="24" aria-hidden="true">
+              <circle cx="18" cy="18" r="17" fill="#0550a0"/>
+              <circle cx="17.5" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+              <line x1="22.5" y1="22" x2="26.5" y2="26.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+              <ellipse cx="17.5" cy="17" rx="12.5" ry="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1" transform="rotate(-30 17.5 17)"/>
+            </svg>
+            <strong>Quinnix Software</strong>
+          </a>
+          <p class="footer-tagline">From Widgets to Working Applications.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html#projects">Projects</a>
+          <a href="arctic-link.html">Arctic Link</a>
+          <a href="voxmason.html">VoxMason</a>
+          <a href="reelgenerator.html">ReelGenerator</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <p class="footer-copy">&copy; <span data-year></span> Quinnix Software. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

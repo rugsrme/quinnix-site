@@ -143,11 +143,12 @@ if (form && feedback && submit) {
       }
 
       if (json.success) {
-        feedback.className  = 'form-feedback is-success';
-        feedback.textContent = json.message || 'Your message was sent. I'll be in touch soon.';
+        feedback.className = 'form-feedback is-success';
+        feedback.innerHTML = '<strong class="feedback-title">Message sent!</strong>'
+          + '<p>Thanks for reaching out. Your message has been received, and I\'ll get back to you as soon as I can.</p>';
         form.reset();
       } else {
-        feedback.className  = 'form-feedback is-error';
+        feedback.className   = 'form-feedback is-error';
         feedback.textContent = json.message || 'Something went wrong. Please try again.';
       }
 
