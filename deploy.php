@@ -16,8 +16,7 @@ require 'recipe/common.php';
 //   QUINNIX_REPOSITORY      Git clone URL of this repository
 //   QUINNIX_DEPLOY_PATH     Versioned-release base directory (NOT the doc root)
 //                           e.g. /home/quinni5/quinnix-deploy
-//   QUINNIX_DOCUMENT_ROOT   Apache document root for quinnix.com
-//                           *** CONFIRM before first deploy — do not assume ***
+//   QUINNIX_DOCUMENT_ROOT   Apache document root (confirmed: /home/quinni5/public_html)
 //
 // Optional:
 //   QUINNIX_HOST            SSH hostname  (default: ehub63.webhostinghub.com)
@@ -29,14 +28,14 @@ require 'recipe/common.php';
 //   ls -la /home/quinni5/quinnix.com        # confirm doc root path and contents
 //   rsync --version && git --version         # confirm server requirements
 //
-// NEVER deploy until QUINNIX_DOCUMENT_ROOT has been confirmed.
+// Confirmed document root: /home/quinni5/public_html
 // ---------------------------------------------------------------------------
 
 $hostName     = getenv('QUINNIX_HOST')           ?: 'ehub63.webhostinghub.com';
 $sshPort      = (int) (getenv('QUINNIX_SSH_PORT') ?: 2222);
 $repository   = getenv('QUINNIX_REPOSITORY')     ?: 'REPOSITORY_NOT_CONFIGURED';
 $deployPath   = getenv('QUINNIX_DEPLOY_PATH')    ?: '/PATH/TO/QUINNIX_DEPLOY_ROOT';
-$documentRoot = getenv('QUINNIX_DOCUMENT_ROOT')  ?: '';   // no default — must be confirmed
+$documentRoot = getenv('QUINNIX_DOCUMENT_ROOT')  ?: '/home/quinni5/public_html';
 $branch       = getenv('QUINNIX_DEPLOY_BRANCH')  ?: 'main';
 
 // Hosting-managed directories rsync must never delete

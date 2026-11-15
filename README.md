@@ -60,13 +60,13 @@ The form posts to `contact.php`. That file requires `config.php` in the same dir
 
 3. Upload it to the server:
    ```sh
-   scp -P 2222 config.php quinni5@YOUR_SERVER_HOST:/home/quinni5/quinnix.com/config.php
+   scp -P 2222 config.php quinni5@YOUR_SERVER_HOST:/home/quinni5/public_html/config.php
    ```
    Or create/upload it via cPanel File Manager.
 
 4. Verify it is in place:
    ```sh
-   ssh -p 2222 quinni5@YOUR_SERVER_HOST "ls -la /home/quinni5/quinnix.com/config.php"
+   ssh -p 2222 quinni5@YOUR_SERVER_HOST "ls -la /home/quinni5/public_html/config.php"
    ```
 
 The site works without `config.php`. Only the contact form requires it; without it,
@@ -89,7 +89,7 @@ directory and rsyncs the active release into the Apache document root on every d
     5/     ← latest
   current  → releases/5
 
-/home/quinni5/quinnix.com/      ← Apache document root (rsynced from active release)
+/home/quinni5/public_html/      ← Apache document root (rsynced from active release)
 ```
 
 **The document root path must be confirmed before the first deploy.** Do not assume it.
@@ -137,7 +137,7 @@ directory and rsyncs the active release into the Apache document root on every d
 
 6. Document root must exist as a real directory (not a symlink):
    ```sh
-   ls -la /home/quinni5/quinnix.com    # ← confirm this path first
+   ls -la /home/quinni5/public_html    # confirmed document root
    ```
 
 **GitHub repository access on the server:**
@@ -160,7 +160,7 @@ Set these in your shell before running `dep`. Do not commit them.
 |---|---|---|
 | `QUINNIX_REPOSITORY` | ✓ | Git clone URL of this repository |
 | `QUINNIX_DEPLOY_PATH` | ✓ | Versioned release base, e.g. `/home/quinni5/quinnix-deploy` |
-| `QUINNIX_DOCUMENT_ROOT` | ✓ | Confirmed Apache document root — **confirm before first deploy** |
+| `QUINNIX_DOCUMENT_ROOT` | ✓ | Apache document root — confirmed: `/home/quinni5/public_html` |
 | `QUINNIX_HOST` | — | SSH hostname (default: `ehub63.webhostinghub.com`) |
 | `QUINNIX_SSH_PORT` | — | SSH port (default: `2222`) |
 | `QUINNIX_DEPLOY_BRANCH` | — | Branch to deploy (default: `main`) |
@@ -171,7 +171,7 @@ Example:
 export QUINNIX_HOST='ehub63.webhostinghub.com'
 export QUINNIX_REPOSITORY='git@github.com:USER/quinnix-site.git'
 export QUINNIX_DEPLOY_PATH='/home/quinni5/quinnix-deploy'
-export QUINNIX_DOCUMENT_ROOT='/home/quinni5/quinnix.com'   # ← confirm this first
+export QUINNIX_DOCUMENT_ROOT='/home/quinni5/public_html'   # confirmed
 export QUINNIX_DEPLOY_BRANCH='main'
 ```
 
@@ -233,9 +233,7 @@ deployer.phar
 
 ### Open questions before first deployment
 
-1. **Document root path:** SSH in and confirm the exact path of the Apache document root for
-   `quinnix.com`. Find it in cPanel → Addon Domains or cPanel → File Manager.
-   Do not deploy until this is confirmed.
+1. **Document root path:** Confirmed — `/home/quinni5/public_html`.
 
 2. **Deploy base path:** Confirm `/home/quinni5/quinnix-deploy` is usable, or choose another path.
 
@@ -255,10 +253,10 @@ deployer.phar
 rsync --version && git --version
 
 # Confirm document root exists (replace PATH with confirmed path)
-ls -la /home/quinni5/quinnix.com
+ls -la /home/quinni5/public_html
 
 # Check current contents — do not delete anything unfamiliar
-ls -la /home/quinni5/quinnix.com/
+ls -la /home/quinni5/public_html/
 
 # Test SSH connection
 ssh -p 2222 quinni5@YOUR_SERVER_HOST echo "SSH OK"
