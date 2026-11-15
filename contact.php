@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Quinnix Software — contact form handler
  *
@@ -12,8 +14,6 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as MailerException;
-
-declare(strict_types=1);
 
 // Accept only POST, only via XHR (defence-in-depth; not a primary guard)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
