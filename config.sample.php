@@ -21,8 +21,5 @@ define('CONTACT_TO',          'contact@quinnix.com');   // ← set your actual e
 // Display name for the recipient (used in email headers)
 define('CONTACT_TO_NAME',     'Quinnix Software');
 
-// Domain used in the From: header of outgoing mail
-define('CONTACT_FROM_DOMAIN', 'quinnix.com');
-
 // Minimum seconds between submissions from the same IP (spam rate limit)
 define('CONTACT_RATE_LIMIT',  60);

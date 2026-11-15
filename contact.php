@@ -108,8 +108,7 @@ $subjectLabels = [
 ];
 $subjectLabel = $subjectLabels[$subject] ?? 'General Inquiry';
 
-$toName    = defined('CONTACT_TO_NAME')     ? CONTACT_TO_NAME     : 'Quinnix Software';
-$fromDomain = defined('CONTACT_FROM_DOMAIN') ? CONTACT_FROM_DOMAIN : 'quinnix.com';
+$toName = defined('CONTACT_TO_NAME') ? CONTACT_TO_NAME : 'Quinnix Software';
 
 $emailSubject = "Quinnix Contact — {$subjectLabel}";
 
@@ -123,7 +122,10 @@ $emailBody .= str_repeat('-', 50) . "\n";
 $emailBody .= "Sent: " . date('Y-m-d H:i:s T') . "\n";
 $emailBody .= "IP:   {$ip}\n";
 
-$headers  = "From: Quinnix Contact Form <noreply@{$fromDomain}>\r\n";
+// Send From the same address we're delivering to — it exists as a real
+// mailbox on the server, so Exim will route it correctly.
+// Reply-To is set to the person who submitted the form so replies go to them.
+$headers  = "From: {$toName} <" . CONTACT_TO . ">\r\n";
 $headers .= "Reply-To: {$name} <{$email}>\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
