@@ -122,11 +122,9 @@ $emailBody .= str_repeat('-', 50) . "\n";
 $emailBody .= "Sent: " . date('Y-m-d H:i:s T') . "\n";
 $emailBody .= "IP:   {$ip}\n";
 
-// Send From the same address we're delivering to — it exists as a real
-// mailbox on the server, so Exim will route it correctly.
-// Reply-To is set to the person who submitted the form so replies go to them.
-$headers  = "From: {$toName} <" . CONTACT_TO . ">\r\n";
-$headers .= "Reply-To: {$name} <{$email}>\r\n";
+// Let the server set From/envelope naturally (cPanel overrides it anyway).
+// Reply-To is the form submitter so replies go directly to them.
+$headers  = "Reply-To: {$name} <{$email}>\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
@@ -134,7 +132,7 @@ $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 // ----------------------------------------------------------------
 // Send
 // ----------------------------------------------------------------
-$sent = mail(CONTACT_TO, $emailSubject, $emailBody, $headers, '-f ' . CONTACT_TO);
+$sent = mail(CONTACT_TO, $emailSubject, $emailBody, $headers);
 
 if (!$sent) {
     error_log("Quinnix contact: mail() failed for {$email}");
