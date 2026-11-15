@@ -46,8 +46,20 @@
   <header class="site-header" data-header>
     <div class="shell nav-wrap">
       <a class="brand" href="#hero" aria-label="Quinnix Software — home">
-        <span class="brand-mark" aria-hidden="true">Q</span>
-        <span class="brand-name">Quinnix<span class="brand-suffix"> Software</span></span>
+        <!-- Brand mark: circular Q with orbital arc -->
+        <svg class="brand-mark" viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
+          <defs>
+            <radialGradient id="bm-bg" cx="38%" cy="32%" r="65%">
+              <stop offset="0%" stop-color="#38bfff"/>
+              <stop offset="100%" stop-color="#0550a0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="18" cy="18" r="17" fill="url(#bm-bg)"/>
+          <circle cx="17.5" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+          <line x1="22.5" y1="22" x2="26.5" y2="26.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+          <ellipse cx="17.5" cy="17" rx="12.5" ry="5" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(-30 17.5 17)"/>
+        </svg>
+        <span class="brand-name">Quinnix<span class="brand-cyan"> Software</span></span>
       </a>
 
       <button class="menu-button" type="button"
@@ -77,7 +89,7 @@
 
         <div class="hero-text">
           <p class="eyebrow">Independent Software Development</p>
-          <h1 id="hero-title">From Widgets to<br><em>Working Applications.</em></h1>
+          <h1 id="hero-title">From Widgets to<br><span class="hero-cyan">Working<br>Applications.</span></h1>
           <p class="hero-tagline">Defining Development.</p>
           <p class="hero-body">
             Practical software built around real problems. Using Linux, open-source technology,
@@ -90,13 +102,184 @@
         </div>
 
         <div class="hero-graphic" aria-hidden="true">
-          <!-- Placeholder — replace with illustration or screenshot -->
-          <div class="hero-placeholder">
-            <div class="hero-placeholder-inner">
-              <span class="placeholder-label">Hero Illustration</span>
-              <span class="placeholder-sub">Artwork to be provided</span>
-            </div>
-          </div>
+          <!-- 3D neon scene — CSS/SVG, no external image -->
+          <svg class="hero-scene" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+            <defs>
+              <!-- Glow filters -->
+              <filter id="glow-xs" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="3" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="glow-sm" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="6" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="glow-lg" x="-120%" y="-120%" width="340%" height="340%">
+                <feGaussianBlur stdDeviation="14" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <!-- Sphere fill -->
+              <radialGradient id="sphere-fill" cx="38%" cy="30%" r="65%">
+                <stop offset="0%"   stop-color="#38bfff" stop-opacity="0.55"/>
+                <stop offset="45%"  stop-color="#0a3878" stop-opacity="0.65"/>
+                <stop offset="100%" stop-color="#020c1e" stop-opacity="0.95"/>
+              </radialGradient>
+              <!-- Small sphere fill -->
+              <radialGradient id="sphere-sm-fill" cx="38%" cy="30%" r="65%">
+                <stop offset="0%"   stop-color="#38bfff" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#020c1e" stop-opacity="0.9"/>
+              </radialGradient>
+              <!-- Atmospheric glow -->
+              <radialGradient id="atmo-glow" cx="55%" cy="42%" r="50%">
+                <stop offset="0%"   stop-color="#0ea5ff" stop-opacity="0.18"/>
+                <stop offset="60%"  stop-color="#0a3878" stop-opacity="0.06"/>
+                <stop offset="100%" stop-color="#020c1e" stop-opacity="0"/>
+              </radialGradient>
+              <!-- Mountain gradient -->
+              <linearGradient id="mtn-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"   stop-color="#081a30"/>
+                <stop offset="100%" stop-color="#030c16"/>
+              </linearGradient>
+              <!-- Ground glow -->
+              <linearGradient id="ground-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"   stop-color="#0ea5ff" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#020810" stop-opacity="0"/>
+              </linearGradient>
+              <!-- Clip sphere -->
+              <clipPath id="sphere-clip">
+                <circle cx="435" cy="195" r="142"/>
+              </clipPath>
+              <clipPath id="sphere-sm-clip">
+                <circle cx="590" cy="118" r="28"/>
+              </clipPath>
+            </defs>
+
+            <!-- Atmosphere glow -->
+            <ellipse cx="435" cy="210" rx="260" ry="210" fill="url(#atmo-glow)"/>
+
+            <!-- === MOUNTAINS / TERRAIN === -->
+            <!-- Background dark silhouette -->
+            <polygon points="0,520 50,400 110,435 170,375 240,415 310,340 390,390 455,315 510,370 575,295 635,345 700,315 700,520"
+                     fill="#04111f" opacity="0.9"/>
+            <!-- Mid-ground terrain -->
+            <polygon points="260,520 320,360 380,425 445,320 510,385 575,305 640,375 700,335 700,520"
+                     fill="url(#mtn-grad)" stroke="#082040" stroke-width="0.5"/>
+            <!-- Lit triangle peak (sharp bright peak, right side) -->
+            <polygon points="535,255 582,370 625,268" fill="#071c3a" stroke="#38bfff" stroke-width="1.5" filter="url(#glow-xs)" opacity="0.75"/>
+            <polygon points="548,235 586,330 622,252" fill="none" stroke="rgba(180,230,255,0.5)" stroke-width="0.8"/>
+            <!-- Second smaller lit peak -->
+            <polygon points="618,278 648,360 672,290" fill="none" stroke="#0ea5ff" stroke-width="1" opacity="0.4" filter="url(#glow-xs)"/>
+
+            <!-- Ground reflection plane -->
+            <rect x="180" y="395" width="520" height="125" fill="url(#ground-grad)" opacity="0.5"/>
+
+            <!-- Horizontal glow lines (ground grid) -->
+            <g stroke="#0ea5ff" fill="none" filter="url(#glow-xs)">
+              <line x1="180" y1="405" x2="700" y2="405" stroke-width="0.9" opacity="0.55"/>
+              <line x1="210" y1="420" x2="700" y2="420" stroke-width="0.6" opacity="0.38"/>
+              <line x1="240" y1="436" x2="700" y2="436" stroke-width="0.4" opacity="0.25"/>
+              <line x1="270" y1="452" x2="700" y2="452" stroke-width="0.3" opacity="0.16"/>
+            </g>
+            <!-- Strong horizon line -->
+            <line x1="150" y1="398" x2="700" y2="398" stroke="#38bfff" stroke-width="1.2" opacity="0.7" filter="url(#glow-sm)"/>
+
+            <!-- === ORBITAL RINGS (behind sphere) === -->
+            <ellipse cx="435" cy="195" rx="188" ry="58" fill="none" stroke="#0ea5ff" stroke-width="0.9"
+                     transform="rotate(-28 435 195)" filter="url(#glow-sm)" opacity="0.45"/>
+            <ellipse cx="435" cy="195" rx="162" ry="48" fill="none" stroke="#38bfff" stroke-width="0.6"
+                     transform="rotate(14 435 195)" opacity="0.35"/>
+
+            <!-- === MAIN GEODESIC SPHERE === -->
+            <!-- Base sphere fill -->
+            <circle cx="435" cy="195" r="142" fill="url(#sphere-fill)" opacity="0.9"/>
+
+            <!-- Wireframe latitude lines (clipped to sphere) -->
+            <g clip-path="url(#sphere-clip)" stroke="#38bfff" fill="none">
+              <ellipse cx="435" cy="118" rx="58"  ry="13" stroke-width="0.7" opacity="0.45"/>
+              <ellipse cx="435" cy="143" rx="98"  ry="22" stroke-width="0.7" opacity="0.52"/>
+              <ellipse cx="435" cy="172" rx="128" ry="32" stroke-width="0.8" opacity="0.6"/>
+              <ellipse cx="435" cy="205" rx="142" ry="40" stroke-width="0.8" opacity="0.65"/>
+              <ellipse cx="435" cy="240" rx="128" ry="32" stroke-width="0.7" opacity="0.52"/>
+              <ellipse cx="435" cy="268" rx="96"  ry="22" stroke-width="0.6" opacity="0.42"/>
+              <ellipse cx="435" cy="292" rx="58"  ry="13" stroke-width="0.5" opacity="0.32"/>
+            </g>
+
+            <!-- Wireframe longitude lines -->
+            <g clip-path="url(#sphere-clip)" stroke="#38bfff" fill="none">
+              <ellipse cx="435" cy="195" rx="142" ry="36" stroke-width="0.7" transform="rotate(0   435 195)" opacity="0.5"/>
+              <ellipse cx="435" cy="195" rx="142" ry="36" stroke-width="0.6" transform="rotate(30  435 195)" opacity="0.42"/>
+              <ellipse cx="435" cy="195" rx="142" ry="36" stroke-width="0.6" transform="rotate(60  435 195)" opacity="0.42"/>
+              <ellipse cx="435" cy="195" rx="142" ry="36" stroke-width="0.7" transform="rotate(90  435 195)" opacity="0.5"/>
+              <ellipse cx="435" cy="195" rx="142" ry="36" stroke-width="0.6" transform="rotate(120 435 195)" opacity="0.4"/>
+              <ellipse cx="435" cy="195" rx="142" ry="36" stroke-width="0.6" transform="rotate(150 435 195)" opacity="0.4"/>
+            </g>
+
+            <!-- Triangular facets — lit (top-right face toward light) -->
+            <g clip-path="url(#sphere-clip)">
+              <polygon points="435,78 500,125 370,125" fill="#0d4a9a" stroke="#38bfff" stroke-width="0.7" opacity="0.9"/>
+              <polygon points="500,125 555,172 480,160" fill="#1060c8" stroke="#38bfff" stroke-width="0.7" opacity="0.85"/>
+              <polygon points="435,78 500,125 545,88"  fill="#133070" stroke="#38bfff" stroke-width="0.6" opacity="0.8"/>
+              <polygon points="370,125 435,78 405,68"  fill="#0a3060" stroke="#38bfff" stroke-width="0.6" opacity="0.75"/>
+              <polygon points="500,125 480,160 545,155" fill="#1468d8" stroke="#38bfff" stroke-width="0.6" opacity="0.8"/>
+              <polygon points="555,172 535,218 578,196" fill="#0a3878" stroke="#38bfff" stroke-width="0.6" opacity="0.75"/>
+              <!-- Mid-lit faces -->
+              <polygon points="370,125 400,168 340,162" fill="#081832" stroke="#1a60b0" stroke-width="0.5" opacity="0.7"/>
+              <polygon points="435,195 400,168 480,158" fill="#09204a" stroke="#1a60b0" stroke-width="0.5" opacity="0.7"/>
+              <polygon points="480,158 535,152 515,202" fill="#0b2e58" stroke="#38bfff" stroke-width="0.5" opacity="0.7"/>
+              <polygon points="435,195 480,232 408,228" fill="#071628" stroke="#1050a0" stroke-width="0.5" opacity="0.65"/>
+              <!-- Dark faces (away from light) -->
+              <polygon points="340,162 368,218 308,208" fill="#040d1a" stroke="#0a2850" stroke-width="0.5" opacity="0.9"/>
+              <polygon points="368,218 335,258 408,252" fill="#040d1a" stroke="#0a2850" stroke-width="0.5" opacity="0.9"/>
+              <polygon points="408,252 435,290 368,285" fill="#030810" stroke="#081e3a" stroke-width="0.5" opacity="0.9"/>
+              <polygon points="480,232 460,272 530,258" fill="#04101e" stroke="#0a2448" stroke-width="0.5" opacity="0.85"/>
+            </g>
+
+            <!-- Sphere outer glow -->
+            <circle cx="435" cy="195" r="142" fill="none" stroke="#0ea5ff" stroke-width="1.5"
+                    filter="url(#glow-lg)" opacity="0.55"/>
+            <circle cx="435" cy="195" r="142" fill="none" stroke="#38bfff" stroke-width="1" opacity="0.8"/>
+            <!-- Inner highlight arc (top-right bright edge) -->
+            <path d="M 490,78 A 142,142 0 0,1 572,255" fill="none" stroke="rgba(180,230,255,0.6)" stroke-width="1.5" filter="url(#glow-xs)"/>
+
+            <!-- === SMALL SATELLITE SPHERE (top-right) === -->
+            <circle cx="590" cy="118" r="28" fill="url(#sphere-sm-fill)" opacity="0.8"/>
+            <circle cx="590" cy="118" r="28" fill="none" stroke="#38bfff" stroke-width="1"
+                    filter="url(#glow-sm)" opacity="0.65"/>
+            <ellipse cx="590" cy="118" rx="28" ry="9" fill="none" stroke="#38bfff" stroke-width="0.5"
+                     clip-path="url(#sphere-sm-clip)" opacity="0.5"/>
+            <ellipse cx="590" cy="118" rx="22" ry="6" fill="none" stroke="#38bfff" stroke-width="0.4"
+                     transform="rotate(80 590 118)" clip-path="url(#sphere-sm-clip)" opacity="0.4"/>
+
+            <!-- === BOTTOM SPHERE === -->
+            <circle cx="318" cy="372" r="42" fill="url(#sphere-sm-fill)" opacity="0.75"/>
+            <circle cx="318" cy="372" r="42" fill="none" stroke="#0ea5ff" stroke-width="1"
+                    filter="url(#glow-sm)" opacity="0.5"/>
+            <ellipse cx="318" cy="372" rx="42" ry="13" fill="none" stroke="#38bfff" stroke-width="0.6" opacity="0.45"/>
+            <ellipse cx="318" cy="372" rx="32" ry="9" fill="none" stroke="#38bfff" stroke-width="0.4"
+                     transform="rotate(70 318 372)" opacity="0.35"/>
+
+            <!-- Connecting particle lines -->
+            <line x1="435" y1="195" x2="590" y2="118" stroke="#38bfff" stroke-width="0.5"
+                  stroke-dasharray="3,4" opacity="0.3" filter="url(#glow-xs)"/>
+            <line x1="435" y1="335" x2="318" y2="372" stroke="#0ea5ff" stroke-width="0.5"
+                  stroke-dasharray="3,4" opacity="0.25"/>
+
+            <!-- Scatter particles -->
+            <g fill="#38bfff" filter="url(#glow-xs)">
+              <circle cx="372" cy="95"  r="2"   opacity="0.7"/>
+              <circle cx="510" cy="72"  r="1.5" opacity="0.6"/>
+              <circle cx="618" cy="168" r="2"   opacity="0.65"/>
+              <circle cx="655" cy="210" r="1.5" opacity="0.5"/>
+              <circle cx="560" cy="308" r="1.2" opacity="0.45"/>
+              <circle cx="298" cy="255" r="1.5" opacity="0.5"/>
+              <circle cx="265" cy="318" r="1"   opacity="0.4"/>
+              <circle cx="658" cy="355" r="1.5" opacity="0.5"/>
+              <circle cx="400" cy="58"  r="1.2" opacity="0.55"/>
+              <circle cx="478" cy="44"  r="1.5" opacity="0.5"/>
+              <circle cx="210" cy="340" r="1"   opacity="0.3"/>
+              <circle cx="680" cy="285" r="1.2" opacity="0.4"/>
+            </g>
+          </svg>
         </div>
 
       </div>
@@ -116,11 +299,25 @@
         <div class="project-grid">
 
           <!-- Project: Arctic Link -->
-          <article class="project-card" aria-labelledby="project-arctic-link-title">
-            <div class="project-image project-image--arctic-link">
-              <img src="assets/images/project-arctic-link-placeholder.svg"
-                   alt="Arctic Link application — screenshot placeholder"
-                   width="600" height="400" loading="lazy">
+          <article class="project-card project-card--arctic" aria-labelledby="project-arctic-link-title">
+            <div class="project-card-header">
+              <div class="project-icon project-icon--arctic">
+                <!-- Terminal icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+                </svg>
+              </div>
+              <!-- Decorative wave -->
+              <svg class="project-wave" viewBox="0 0 200 100" preserveAspectRatio="xMaxYMid meet">
+                <defs>
+                  <linearGradient id="wave-arctic" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#38bfff" stop-opacity="0"/>
+                    <stop offset="100%" stop-color="#38bfff" stop-opacity="0.3"/>
+                  </linearGradient>
+                </defs>
+                <polyline points="10,55 25,55 32,35 38,72 44,25 50,78 56,18 62,65 68,42 74,60 80,50 86,54 100,55 130,55 200,55"
+                          fill="none" stroke="url(#wave-arctic)" stroke-width="2"/>
+              </svg>
               <span class="project-status" data-status="development">In Development</span>
             </div>
             <div class="project-content">
@@ -143,11 +340,40 @@
           </article>
 
           <!-- Project: VoxMason -->
-          <article class="project-card" aria-labelledby="project-voxmason-title">
-            <div class="project-image project-image--voxmason">
-              <img src="assets/images/project-voxmason-placeholder.svg"
-                   alt="VoxMason application — screenshot placeholder"
-                   width="600" height="400" loading="lazy">
+          <article class="project-card project-card--voxmason" aria-labelledby="project-voxmason-title">
+            <div class="project-card-header">
+              <div class="project-icon project-icon--voxmason">
+                <!-- Microphone icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/>
+                  <line x1="8" y1="22" x2="16" y2="22"/>
+                </svg>
+              </div>
+              <!-- Decorative wave (audio waveform) -->
+              <svg class="project-wave" viewBox="0 0 200 100" preserveAspectRatio="xMaxYMid meet">
+                <defs>
+                  <linearGradient id="wave-vox" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#34c77b" stop-opacity="0"/>
+                    <stop offset="100%" stop-color="#34c77b" stop-opacity="0.35"/>
+                  </linearGradient>
+                </defs>
+                <g stroke="url(#wave-vox)" fill="none" stroke-linecap="round">
+                  <line x1="20" y1="50" x2="20" y2="50" stroke-width="2"/>
+                  <line x1="30" y1="38" x2="30" y2="62" stroke-width="2"/>
+                  <line x1="40" y1="22" x2="40" y2="78" stroke-width="2.5"/>
+                  <line x1="50" y1="30" x2="50" y2="70" stroke-width="2.5"/>
+                  <line x1="60" y1="15" x2="60" y2="85" stroke-width="3"/>
+                  <line x1="70" y1="25" x2="70" y2="75" stroke-width="2.5"/>
+                  <line x1="80" y1="35" x2="80" y2="65" stroke-width="2.5"/>
+                  <line x1="90" y1="20" x2="90" y2="80" stroke-width="3"/>
+                  <line x1="100" y1="30" x2="100" y2="70" stroke-width="2.5"/>
+                  <line x1="110" y1="40" x2="110" y2="60" stroke-width="2"/>
+                  <line x1="120" y1="45" x2="120" y2="55" stroke-width="2"/>
+                  <line x1="130" y1="48" x2="130" y2="52" stroke-width="2"/>
+                  <line x1="150" y1="50" x2="150" y2="50" stroke-width="1"/>
+                </g>
+              </svg>
               <span class="project-status" data-status="development">In Development</span>
             </div>
             <div class="project-content">
@@ -175,11 +401,26 @@
           </article>
 
           <!-- Project: ReelGenerator -->
-          <article class="project-card" aria-labelledby="project-reelgenerator-title">
-            <div class="project-image project-image--reelgenerator">
-              <img src="assets/images/project-reelgenerator-placeholder.svg"
-                   alt="ReelGenerator application — screenshot placeholder"
-                   width="600" height="400" loading="lazy">
+          <article class="project-card project-card--reel" aria-labelledby="project-reelgenerator-title">
+            <div class="project-card-header">
+              <div class="project-icon project-icon--reel">
+                <!-- Film/play icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                </svg>
+              </div>
+              <!-- Decorative wave (video frequency) -->
+              <svg class="project-wave" viewBox="0 0 200 100" preserveAspectRatio="xMaxYMid meet">
+                <defs>
+                  <linearGradient id="wave-reel" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#a855f7" stop-opacity="0"/>
+                    <stop offset="100%" stop-color="#a855f7" stop-opacity="0.35"/>
+                  </linearGradient>
+                </defs>
+                <polyline points="10,55 22,55 28,42 35,65 42,30 49,72 56,38 63,60 70,45 78,58 86,50 95,54 110,55 150,55 200,55"
+                          fill="none" stroke="url(#wave-reel)" stroke-width="2"/>
+              </svg>
               <span class="project-status" data-status="development">In Development</span>
             </div>
             <div class="project-content">
@@ -499,7 +740,12 @@
 
         <div class="footer-brand">
           <a href="#hero" class="footer-brand-link" aria-label="Back to top">
-            <span class="brand-mark" aria-hidden="true">Q</span>
+            <svg class="brand-mark" viewBox="0 0 36 36" width="24" height="24" aria-hidden="true">
+              <circle cx="18" cy="18" r="17" fill="#0550a0"/>
+              <circle cx="17.5" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="2.4"/>
+              <line x1="22.5" y1="22" x2="26.5" y2="26.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+              <ellipse cx="17.5" cy="17" rx="12.5" ry="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1" transform="rotate(-30 17.5 17)"/>
+            </svg>
             <strong>Quinnix Software</strong>
           </a>
           <p class="footer-tagline">From Widgets to Working Applications.</p>

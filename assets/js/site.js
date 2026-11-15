@@ -87,6 +87,21 @@ if (sections.length && navLinks.length) {
 }
 
 /* ============================================================
+   3D CARD TILT
+   ============================================================ */
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    card.style.transform = `perspective(700px) rotateY(${x * 10}deg) rotateX(${-y * 7}deg) translateZ(6px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+/* ============================================================
    CONTACT FORM
    ============================================================ */
 const form     = document.getElementById('contact-form');
