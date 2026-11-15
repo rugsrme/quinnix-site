@@ -5,9 +5,13 @@
  * Handles POST submissions from the contact form in index.html.
  * Returns JSON: { "success": bool, "message": string }
  *
+ * Sends via SMTP using PHPMailer (lib/PHPMailer/).
  * Config file (not in repository): config.php in the same directory.
  * See config.sample.php for required constants.
  */
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception as MailerException;
 
 declare(strict_types=1);
 
@@ -28,6 +32,13 @@ function json_exit(bool $success, string $message, int $status = 200): never
 }
 
 // ----------------------------------------------------------------
+// PHPMailer
+// ----------------------------------------------------------------
+require __DIR__ . '/lib/PHPMailer/Exception.php';
+require __DIR__ . '/lib/PHPMailer/PHPMailer.php';
+require __DIR__ . '/lib/PHPMailer/SMTP.php';
+
+// ----------------------------------------------------------------
 // Load site config
 // ----------------------------------------------------------------
 $configFile = __DIR__ . '/config.php';
@@ -40,6 +51,13 @@ require $configFile;
 if (!defined('CONTACT_TO') || empty(CONTACT_TO)) {
     error_log('Quinnix contact: CONTACT_TO is not configured.');
     json_exit(false, 'Server configuration is not complete. Please contact via email directly.', 500);
+}
+
+foreach (['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS'] as $required) {
+    if (!defined($required) || empty(constant($required))) {
+        error_log("Quinnix contact: {$required} is not configured.");
+        json_exit(false, 'Server configuration is not complete. Please contact via email directly.', 500);
+    }
 }
 
 // ----------------------------------------------------------------
@@ -108,8 +126,6 @@ $subjectLabels = [
 ];
 $subjectLabel = $subjectLabels[$subject] ?? 'General Inquiry';
 
-$toName = defined('CONTACT_TO_NAME') ? CONTACT_TO_NAME : 'Quinnix Software';
-
 $emailSubject = "Quinnix Contact — {$subjectLabel}";
 
 $emailBody  = "New contact form submission from quinnix.com\n";
@@ -122,20 +138,31 @@ $emailBody .= str_repeat('-', 50) . "\n";
 $emailBody .= "Sent: " . date('Y-m-d H:i:s T') . "\n";
 $emailBody .= "IP:   {$ip}\n";
 
-// Let the server set From/envelope naturally (cPanel overrides it anyway).
-// Reply-To is the form submitter so replies go directly to them.
-$headers  = "Reply-To: {$name} <{$email}>\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/plain; charset=utf-8\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-
 // ----------------------------------------------------------------
-// Send
+// Send via SMTP
 // ----------------------------------------------------------------
-$sent = mail(CONTACT_TO, $emailSubject, $emailBody, $headers);
+$toName = defined('CONTACT_TO_NAME') ? CONTACT_TO_NAME : 'Quinnix Software';
 
-if (!$sent) {
-    error_log("Quinnix contact: mail() failed for {$email}");
+try {
+    $mailer = new PHPMailer(true);
+    $mailer->isSMTP();
+    $mailer->Host       = SMTP_HOST;
+    $mailer->SMTPAuth   = true;
+    $mailer->Username   = SMTP_USER;
+    $mailer->Password   = SMTP_PASS;
+    $mailer->SMTPSecure = defined('SMTP_SECURE') ? SMTP_SECURE : PHPMailer::ENCRYPTION_STARTTLS;
+    $mailer->Port       = defined('SMTP_PORT')   ? (int) SMTP_PORT : 587;
+
+    $mailer->setFrom(SMTP_USER, $toName);
+    $mailer->addAddress(CONTACT_TO, $toName);
+    $mailer->addReplyTo($email, $name);
+
+    $mailer->Subject = $emailSubject;
+    $mailer->Body    = $emailBody;
+
+    $mailer->send();
+} catch (MailerException $e) {
+    error_log("Quinnix contact: mailer error for {$email}: " . $e->getMessage());
     json_exit(false, 'Could not send your message due to a server error. Please try emailing directly.', 500);
 }
 

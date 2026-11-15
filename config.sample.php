@@ -23,3 +23,11 @@ define('CONTACT_TO_NAME',     'Quinnix Software');
 
 // Minimum seconds between submissions from the same IP (spam rate limit)
 define('CONTACT_RATE_LIMIT',  60);
+
+// SMTP — use the cPanel mailbox credentials for the From address
+// Typical cPanel values: host = mail.yourdomain.com, port = 587, secure = 'tls'
+define('SMTP_HOST',    'mail.quinnix.com');
+define('SMTP_PORT',    587);
+define('SMTP_SECURE',  'tls');   // 'tls' = STARTTLS on 587, 'ssl' = port 465
+define('SMTP_USER',    'contact@quinnix.com');
+define('SMTP_PASS',    'your-mailbox-password');
