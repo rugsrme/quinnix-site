@@ -14,8 +14,7 @@ require 'recipe/common.php';
 // Required environment variables (set in shell before running dep):
 //
 //   QUINNIX_REPOSITORY      Git clone URL of this repository
-//   QUINNIX_DEPLOY_PATH     Versioned-release base directory (NOT the doc root)
-//                           e.g. /home/quinni5/quinnix-deploy
+//   QUINNIX_DEPLOY_PATH     Versioned-release base directory (confirmed: /home/quinni5/quinnix_deploy)
 //   QUINNIX_DOCUMENT_ROOT   Apache document root (confirmed: /home/quinni5/public_html)
 //
 // Optional:
@@ -33,8 +32,8 @@ require 'recipe/common.php';
 
 $hostName     = getenv('QUINNIX_HOST')           ?: 'ehub63.webhostinghub.com';
 $sshPort      = (int) (getenv('QUINNIX_SSH_PORT') ?: 2222);
-$repository   = getenv('QUINNIX_REPOSITORY')     ?: 'REPOSITORY_NOT_CONFIGURED';
-$deployPath   = getenv('QUINNIX_DEPLOY_PATH')    ?: '/PATH/TO/QUINNIX_DEPLOY_ROOT';
+$repository   = getenv('QUINNIX_REPOSITORY')     ?: 'git@github.com:rugsrme/quinnix-site.git';
+$deployPath   = getenv('QUINNIX_DEPLOY_PATH')    ?: '/home/quinni5/quinnix_deploy';
 $documentRoot = getenv('QUINNIX_DOCUMENT_ROOT')  ?: '/home/quinni5/public_html';
 $branch       = getenv('QUINNIX_DEPLOY_BRANCH')  ?: 'main';
 

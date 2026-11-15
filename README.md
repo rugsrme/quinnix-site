@@ -82,7 +82,7 @@ Same architecture as the VoxMason site. Deployer keeps versioned releases in a s
 directory and rsyncs the active release into the Apache document root on every deploy and rollback.
 
 ```
-/home/quinni5/quinnix-deploy/   ← versioned releases (Deployer-managed)
+/home/quinni5/quinnix_deploy/   ← versioned releases (Deployer-managed)
   releases/
     1/
     ...
@@ -132,7 +132,7 @@ directory and rsyncs the active release into the Apache document root on every d
 
 5. Create the deploy base directory on first run:
    ```sh
-   mkdir -p /home/quinni5/quinnix-deploy
+   mkdir -p /home/quinni5/quinnix_deploy
    ```
 
 6. Document root must exist as a real directory (not a symlink):
@@ -158,8 +158,8 @@ Set these in your shell before running `dep`. Do not commit them.
 
 | Variable | Required | Description |
 |---|---|---|
-| `QUINNIX_REPOSITORY` | ✓ | Git clone URL of this repository |
-| `QUINNIX_DEPLOY_PATH` | ✓ | Versioned release base, e.g. `/home/quinni5/quinnix-deploy` |
+| `QUINNIX_REPOSITORY` | ✓ | Git clone URL (confirmed: `git@github.com:rugsrme/quinnix-site.git`) |
+| `QUINNIX_DEPLOY_PATH` | ✓ | Versioned release base (confirmed: `/home/quinni5/quinnix_deploy`) |
 | `QUINNIX_DOCUMENT_ROOT` | ✓ | Apache document root — confirmed: `/home/quinni5/public_html` |
 | `QUINNIX_HOST` | — | SSH hostname (default: `ehub63.webhostinghub.com`) |
 | `QUINNIX_SSH_PORT` | — | SSH port (default: `2222`) |
@@ -169,8 +169,8 @@ Example:
 
 ```sh
 export QUINNIX_HOST='ehub63.webhostinghub.com'
-export QUINNIX_REPOSITORY='git@github.com:USER/quinnix-site.git'
-export QUINNIX_DEPLOY_PATH='/home/quinni5/quinnix-deploy'
+export QUINNIX_REPOSITORY='git@github.com:rugsrme/quinnix-site.git'
+export QUINNIX_DEPLOY_PATH='/home/quinni5/quinnix_deploy'
 export QUINNIX_DOCUMENT_ROOT='/home/quinni5/public_html'   # confirmed
 export QUINNIX_DEPLOY_BRANCH='main'
 ```
@@ -235,9 +235,9 @@ deployer.phar
 
 1. **Document root path:** Confirmed — `/home/quinni5/public_html`.
 
-2. **Deploy base path:** Confirm `/home/quinni5/quinnix-deploy` is usable, or choose another path.
+2. **Deploy base path:** Confirmed — `/home/quinni5/quinnix_deploy`.
 
-3. **GitHub repository URL:** Create the GitHub repository and confirm the clone URL before deploying.
+3. **GitHub repository URL:** Confirmed — `rugsrme/quinnix-site` (`git@github.com:rugsrme/quinnix-site.git`).
 
 4. **config.php on server:** Upload `config.php` with the real contact email before testing the form.
 
