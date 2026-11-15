@@ -605,16 +605,14 @@ blockquote footer { font-size: var(--text-sm); color: var(--text-muted); margin-
 .about-inner { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
 @media (min-width: 768px) { .about-inner { grid-template-columns: 220px 1fr; } }
 
-.about-photo-placeholder {
+.about-photo {
   width: 100%; max-width: 220px; aspect-ratio: 1;
-  background: var(--bg-card);
-  border: 2px dashed rgba(14,165,255,0.25);
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-}
-.about-photo-placeholder span {
-  color: var(--text-muted); font-size: var(--text-sm);
-  text-transform: uppercase; letter-spacing: 0.06em;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border: 2px solid var(--border-mid);
+  box-shadow: var(--glow-sm), 0 4px 24px rgba(0,0,0,0.5);
 }
 .about-text h2 { margin-bottom: 1.25rem; }
 .about-text p { margin-bottom: 1rem; }
